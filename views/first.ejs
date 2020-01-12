@@ -8,8 +8,8 @@
   <navbar>
     <ul>
       <li><strong><a href="#">Home</a></strong></li>
-      <li><strong><a href="next.html">Next Page</a></strong></li>
-      <li><strong><a href="next.html">Next Next Page</a></strong></li>
+      <li><strong><a href="/login">Login</a></strong></li>
+      <li><strong><a href="/register">Register</a></strong></li>
       <li><strong><a href="next.html">Last Page</a></strong></li>
     </ul>
   </navbar>
@@ -23,7 +23,11 @@ In association with Carnegie Mellon University, the SSR School of Advanced Softw
 
 <div class="inner">
   <ul>
-    <li>Department of Computer Science</li>
+    <% if(currentUser) { %>
+      <li>Welcome <%= currentUser%></li>
+      <button ><a href="/newcase">New Case</a></button>
+    <%}%>
+    
     <li>Department of Electronics And Communication</li>
     <li>Department of Electrical And Electronics</li>
     <li>Department of Bio-Medical</li>

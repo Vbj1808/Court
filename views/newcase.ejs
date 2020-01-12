@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+    <head>
+        <title>New Case</title>
+    </head>
+    <body>
+        <form action="/newcase" method="post">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Case Name</label>
+              <input name ="casename" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group col-md-4" >
+                <label for="inputState">Type</label>
+                <select name="type" id="inputState" class="form-control">
+                  <option selected>Civil</option>
+                  <option>Chemical</option>
+                  <option>Mechanical</option>
+                </select>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Name</label>
+              <input name="name" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Lawyer</label>
+              <input name="lawyer" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Description</label>
+              <input name="desc" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Court</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style type="text/css">
+		h1{
+			text-align: center;
+			padding-top: 20px;
+			font-family: "Times New Roman";
+			float: center;
+		}
+		.top {
+			background-color: rgba(228,228,228,1);
+			height: 100px;
+			margin-bottom: 10px;
+		}
+		.topi {
+			height: 100px;
+			float: left;
+		}
+		#btmi {
+			height: 100px;
+			float: right;
+		}
+
+		.btn-outline-secondary {
+			margin-left: 20px;
+		}
+		.sr {
+			float: right;
+			margin-right: 20px;
+		}
+		.dropbtn {
+ 			 background-color: #4CAF50;
+ 			 color: white;
+ 			 padding: 16px;
+ 			 font-size: 16px;
+ 			 border: none;
+			}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  float: right;
+}
+
+		.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+  a {
+	  color: black;
+  }
+
+ .lbl {
+	 float: right;
+	 margin-right: 20px;
+	 font-family: "Courier New";
+	 font-size: 40px;;
+ }
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+	</style>
+</head>
+<body>
+	<div class="top">
+		<img class="topi" src="https://i.ya-webdesign.com/images/india-transparent-emblem.png">
+		<img id="btmi"src="http://www.vectorsland.com/imgd/l25824-lady-justice-logo-62987.png">
+		<h1>Indian Courts</h1>
+	</div>
+
+	<div class="sec">
+		
+		<button type="button" class="btn btn-outline-secondary">Home</button>
+		<% if(!currentUser){%>
+		<span class="dropdown">
+			<button type="button" class="btn btn-outline-secondary sr drpbtn">Login</button>
+			<div class="dropdown-content">
+    			<a href="/login">Client</a>
+  		  		<a href="#">Lawyer</a>
+  			</div>
+		  </span>
+		  <%} else {%>
+			<span class="lbl">
+			<label >Welcome <%= currentUser.name%></label>
+			<button  type="button" class="btn btn-outline-secondary"><a href="/logout" >Logout</a></button>
+			</span>
+			<%}%>
+		<hr>
+	</div>

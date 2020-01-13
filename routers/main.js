@@ -23,21 +23,36 @@ app.use(passport.session());
 // app.set('views', __dirname + '/views');
 app.get("/",(req,res) => {
     if(req.isAuthenticated()){
-        res.render("first",{currentUser: req.user.username});
+        res.render("first",{currentUser: req.user});
         console.log("From Home Page: " + req.user.username);
     }else{
         res.render("first",{currentUser: null});
     }
+    Case.find({},(err, foundcase) =>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(foundcase);
+        }
+        
+    });
 });
 
-app.get("/newcase",(req,res) => res.render("newcase"));
+app.get("/:id/newcase",(req,res) =>{
+     res.render("newcase",{userId : req.params.id});
+    });
 
-app.post("/newcase",(req,res) => {
+app.get("/logout",(req, res) =>{
+    req.logout();
+    res.redirect("/");
+})
+
+app.post("/:id/newcase",(req,res) => {
     var author = {
         id: req.user._id,
         name: req.user.name
     }
-    var newCase = new Case({name: req.body.name, 
+    var newCase = new Case({name: req.body.casename, 
                             type: req.body.type,
                             description: req.body.desc,
                             lawyer : req.body.lawyer,
@@ -50,6 +65,18 @@ app.post("/newcase",(req,res) => {
             res.redirect("/");
         }
     })
+});
+
+app.get("/:id/cases",(req, res) => {
+    var newcase ;
+    Case.find({"author.id" : req.params.id},(err, found) =>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(found);
+           res.render("cases",{caseNow : found});
+        }
+    });
 });
 app.get("/login", (req,res) => res.render("clilogin"));
 
@@ -77,8 +104,12 @@ app.post("/login", passport.authenticate("local",
 
      console.log(req.user);
      req.session.user = req.user;
-     res.redirect('/');
+     res.redirect('/' + req.user._id + "/dashboard");
  
+});
+
+app.get("/:id/dashboard",(req,res) => {
+    res.render("clientdashboard",{clientNow : req.user});
 });
 
 module.exports = app;

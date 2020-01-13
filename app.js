@@ -13,7 +13,7 @@ mongoose.Promise = global.Promise;
 
 const databaseUri = process.env.MONGODB_URI || 'mongodb://localhost/yelp_camp';
 
-mongoose.connect('mongodb+srv://rclemsmith:ssndudes@site-kddyl.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true},{ useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/myapp', {useNewUrlParser: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

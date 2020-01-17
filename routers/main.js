@@ -23,7 +23,7 @@ app.use(passport.session());
 // app.set('views', __dirname + '/views');
 app.get("/",(req,res) => {
     if(req.isAuthenticated()){
-        res.render("first",{currentUser: req.user});
+        res.redirect('/' + req.user._id + "/dashboard");
         console.log("From Home Page: " + req.user.username);
     }else{
         res.render("first",{currentUser: null});
@@ -39,7 +39,13 @@ app.get("/",(req,res) => {
 });
 
 app.get("/:id/newcase",(req,res) =>{
-     res.render("newcase",{userId : req.params.id});
+    if(req.isAuthenticated()){
+        res.render("newcase",{currentUser: req.user, userId : req.params.id});
+        console.log("From Home Page: " + req.user.username);
+    }else{
+        res.render("newcase",{currentUser: null});
+    }
+     res.render("",{userId : req.params.id});
     });
 
 app.get("/logout",(req, res) =>{
@@ -62,7 +68,7 @@ app.post("/:id/newcase",(req,res) => {
         if(err){
             console.log(err)
         }else{
-            res.redirect("/");
+            res.redirect('/' + req.user._id + "/dashboard");
         }
     })
 });
@@ -74,7 +80,7 @@ app.get("/:id/cases",(req, res) => {
             console.log(err);
         }else{
             console.log(found);
-           res.render("cases",{caseNow : found});
+           res.render("cases",{caseNow : found,currentUser: req.user});
         }
     });
 });
@@ -109,7 +115,7 @@ app.post("/login", passport.authenticate("local",
 });
 
 app.get("/:id/dashboard",(req,res) => {
-    res.render("clientdashboard",{clientNow : req.user});
+    res.render("dashboard",{clientNow : req.user,currentUser: req.user});
 });
 
 module.exports = app;

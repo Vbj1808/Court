@@ -1,6 +1,4 @@
-<%- include ("partials/header") %>
-	<style>
-		.h1{
+.h1{
 	border: 2px solid grey;
 	width: 500px;
 	border-radius: 25px;
@@ -12,11 +10,11 @@
 
 }
 
-/* body{
+body{
 	padding-top: 20px;
 	background-repeat: 100%;
-	background-color: white;
-} */
+	background-color: lightgrey;
+}
 
 .container{
 	margin-top: 50px;
@@ -117,45 +115,3 @@ input:focus{
 	border: 2px solid blue;
 	outline : none;
 }
-
-	</style>
-	<div class="container">	
-	
-	<h1 class="h1">New Case Registration..!!</h1>
-		
-	<form action="/<%=userId%>/newcase" method="post">
-		<div>
-			<label style="font-family: 'Poppins', sans-serif; font-size: 18px;" class="l1">Case Name</label>
-			<input type="text" class="input1" name ="casename" placeholder="case name">
-		</div>
-
-		<div>
-			<label  style="font-family: 'Poppins', sans-serif; font-size: 18px;" class="l2">Type</label>
-			<select name="type" class="input2">
-				<option>Civil</option>
-				<option selected="true">Criminal</option> 
-				<option>Enforcement</option>
-			</select>
-		</div>
-
-
-		<div>
-			<label style="font-family: 'Poppins', sans-serif; font-size: 18px;" class="l4">Lawyer</label>
-			<input type="text" name="lawyer" class="input4" placeholder="lawyer">
-		</div>
-
-		<div>
-			<label style="font-family: 'Poppins', sans-serif; font-size: 18px;" class="l5">Description</label>
-			<textarea class="input5" name="desc"></textarea>
-		</div>
-
-
-		<div>
-			<button type="submit" class="btn btn-primary" id="btn1">Submit</button>
-			<button type="button" class="btn btn-primary" id="btn2">Reset</button>
-		</div>		
-		
-	</form>
-	</div>
-</body>
-</html>

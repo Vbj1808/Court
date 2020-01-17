@@ -32,4 +32,4 @@ passport.use(new LocalStrategy(Client.authenticate()));
 passport.serializeUser(Client.serializeUser());
 passport.deserializeUser(Client.deserializeUser());
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT || 3400, process.env.IP, () => console.log('Example app listening on port ' + process.env.PORT ));

@@ -1,0 +1,160 @@
+<%- include ("partials/header") %>
+<style type="text/css">
+	.margins{
+	
+	font-weight: bold;
+
+}
+
+.margins1{
+	
+	font-weight: bold;
+}
+
+h1{
+	text-align: center;
+}
+
+.container{
+	border-radius: 10px;
+	padding: 30px;
+	box-shadow: 0px 0px 10px 0px;
+	background: rgba(228,228,228,1);
+}
+
+input:focus{
+	background: #fff;
+	border: 3px solid blue;
+	outline: none;
+	
+}
+
+input{
+	box-shadow: 0px 0px 10px 0px;
+}
+</style>
+	<div >
+ 		 <h1>REGISTRATION</h1>
+	</div>
+	<div class="container">
+		<form action="/lawregister" method="POST">
+		  <!-- <div class="form-row"> -->
+		  	<div class="form-group">
+		    	<label class="margins"  for="inputName">Name</label>
+		    	<input  name="name" type="text" class="form-control" id="name" placeholder="name">
+		    </div>
+		    <div class="form-row">
+		    <div class="form-group col-md-6">
+		    	<label class="margins" for="inputName">DOB</label>
+		    	<input name="dob" type="date" class="form-control" id="date" placeholder="date">
+		    </div>
+
+		   <div class="form-group col-md-6">
+		    	<label class="margins" for="inputgender">Gender</label>
+		    	<select name="gender" id="inputgender" class="form-control">
+		        <option selected>Choose...</option>
+		        <option>Male</option>
+		        <option>Female</option>
+		        <option>Others</option>
+		    </select>		    	
+			</div>
+			<div class="form-group col-md-6">
+				<label class="margins1" for="contact">Contact Number</label>
+			  <input name="mobile" type="text" class="form-control" id="contact" placeholder="1234567890">
+			</div>
+
+			</div>
+		    <div class="form-group">
+		      <label  class="margins" for="inputEmail4">Email</label>
+		      <input name="email"  type="email" class="form-control" id="inputEmail4" placeholder="email">
+		    </div>
+
+		    <div class="form-row">
+		    <div class="form-group col-md-6">
+		      <label class="margins1" for="inputid">Lawyer Id</label>
+		      <input name="uid" type="text" class="form-control" id="inputid" placeholder="lawyerid">
+		    </div>
+		    <div class="form-group col-md-6">
+		      <label for="inputtype">Qualification</label>
+		      <select name="qualification" id="inputtype" class="form-control">
+		        <option selected>Choose...</option>
+		        <option>Business</option>
+		        <option>Civil</option>
+		        <option>Corporate</option>
+		        <option>Criminal</option>
+		        <option>Environmental</option>
+		        <option>Family</option>
+		        <option>General Practice</option>
+		        <option>Human Rights</option>
+		        <option>Immigration</option>
+		        <option>Intellectual Property</option>
+		        <option>Tax</option>       
+		      </select>
+		    </div>
+		</div>
+
+		    <div class="form-group">
+		    	<label class="margins" for="inputUsername">Username</label>
+		    	<input name="username" type="text" class="form-control" id="username" placeholder="username">
+		    </div>
+		    <div class="form-group ">
+		      <label  class="margins" style="font-weight: bold" for="inputPassword4">Password</label>
+		      <input  name="password" type="password" class="form-control" id="inputPassword4" placeholder="password">
+		    </div>
+		  	
+		  <div class="form-group">
+		    <label class="margins1" for="inputAddress">Address</label>
+		    <input name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+		  </div>
+		  <div class="form-row">
+		    <div class="form-group col-md-6">
+		      <label class="margins1" for="inputCity">City</label>
+		      <input name="city" type="text" class="form-control" id="inputCity" placeholder="city">
+		    </div>
+		    <div class="form-group col-md-4">
+		      <label for="inputState">State</label>
+		      <select name="state" id="inputState" class="form-control">
+		        <option selected>Choose...</option>
+		        <option>Andhra Pradesh</option>
+		        <option>Arunachal Pradesh</option>
+		        <option>Assam</option>
+		        <option>Bihar</option>
+		        <option>Chhattisgarh</option>
+		        <option>Goa</option>
+		        <option>Gujarat</option>
+		        <option>Haryana</option>
+		        <option>Himachal Pradesh</option>
+		        <option>Jammu & Kashmir</option>
+		        <option>Jharkhand</option>
+		        <option>Karnataka</option>
+		        <option>Kerala</option>
+		        <option>Madhya Pradesh</option>
+		        <option>Maharashtra</option>
+		        <option>Manipur</option>
+		        <option> Meghalaya</option>
+		        <option>Mizoram</option>
+		        <option>Nagaland</option>
+		        <option>Odisha</option>
+		        <option>Punjab</option>
+		        <option>Rajasthan</option>
+		        <option>Sikkim</option>
+		        <option>Tamil Nadu</option>
+		        <option>Telangana</option>
+		        <option>Tripura</option>
+		        <option>Uttar Pradesh</option>
+		        <option>Uttarakhand </option>
+		        <option>West Bengal</option>
+		      </select>
+		    </div>
+		    <div class="form-group col-md-2">
+		      <label for="inputZip">Zip</label>
+		      <input name="pincode" type="text" class="form-control" id="inputZip">
+		    </div>
+		  </div>
+		  
+		  <button type="submit" style="margin-left: 50%" class="btn btn-primary btn-lg">Register</button>
+
+	</form>
+</div>
+</body>
+</html>

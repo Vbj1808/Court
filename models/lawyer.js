@@ -5,10 +5,13 @@ var LawyerSchema = new mongoose.Schema({
     username: String,
     password: String,
     name: String,
+    gender: String,
     dob: Date,
+    qualification: String,
     mobile: Number,
     email: String,
-    uid:String
+    uid:String,
+    address: String
 });
 
 LawyerSchema.plugin(passportLocalMongoose);

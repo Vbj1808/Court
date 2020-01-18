@@ -1,0 +1,32 @@
+.margins{
+	
+	font-weight: bold;
+
+}
+
+.margins1{
+	
+	font-weight: bold;
+}
+
+h1{
+	text-align: center;
+}
+
+.container{
+	border-radius: 10px;
+	padding: 30px;
+	box-shadow: 0px 0px 10px 0px;
+	background: rgba(228,228,228,1);
+}
+
+input:focus{
+	background: #fff;
+	border: 3px solid blue;
+	outline: none;
+	
+}
+
+input{
+	box-shadow: 0px 0px 10px 0px;
+}

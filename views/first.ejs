@@ -4,7 +4,7 @@
   .container1 {
     float: left;
     width : 500px;
-    height: 400px;
+    height: 450px;
     margin-left: 200px;
     margin-top: 120px;
     border: 5px rgba(228,228,228,1) solid;
@@ -31,10 +31,16 @@
     width: 100px;
   }
 
+  .sbtn {
+    margin-left: 90px;
+    margin-top: 25px;
+    width: 300px;
+  }
+
   .container2 {
     float: left;
     width : 500px;
-    height: 400px;
+    height: 450px;
     margin-left: 200px;
     margin-top: 120px;
     border: 5px rgba(228,228,228,1) solid;
@@ -59,8 +65,9 @@
       <input type="password" name="password" class="form-control uid" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
     </div>
     <button type="submit" class="btn btn-info bbsub">Submit</button>
+    <button class="btn btn-dark sbtn"><a href="/register">Click To Signup</a></button>
   </form>
- 
+  
 </div>
 <span class="container2">
   <form action="/lawlogin" method="POST">
@@ -78,6 +85,7 @@
       <input type="password" name="lawpassword" class="form-control uid" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
     </div>
     <button type="submit" class="btn btn-info bbsub">Submit</button>
+    <button class="btn btn-dark sbtn"><a href="/lawregister">Click To Signup</a></button>
   </form>
 </span>
 </div>

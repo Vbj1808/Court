@@ -9,6 +9,8 @@ const { isLoggedIn } = middleware;
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const Case = require("../models/cases");
+const Lawyer = require("../models/lawyer");
+const fs = require("fs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(cookieParser());
@@ -86,14 +88,73 @@ app.get("/:id/cases",(req, res) => {
 });
 app.get("/login", (req,res) => res.render("clilogin"));
 
-app.get("/register", (req,res) => res.render("cliregister"));
+app.get("/register", (req,res) => {
+    if(req.isAuthenticated()){
+        res.render("rclient",{currentUser: req.user, userId : req.params.id})
+        console.log("From Home Page: " + req.user.username);
+    }else{
+        res.render("rclient",{currentUser: null});
+    }
+    
+});
+
+app.get("/lawregister",(req,res) => {
+    if(req.isAuthenticated()){
+        res.render("rlawyer",{currentUser: req.user, userId : req.params.id})
+        console.log("From Home Page: " + req.user.username);
+    }else{
+        res.render("rlawyer",{currentUser: null});
+    }
+});
+
+app.post("/lawregister",(req,res) => {
+    var addr = req.body.address + " ," + req.body.city + " = " + req.body.pincode + req.body.state ;  
+    var newLawyer = new Lawyer({username : req.body.username ,
+         name:req.body.name,
+          email:req.body.email,
+           mobile:req.body.mobile, 
+           dob:req.body.dob,
+           address : addr,
+           gender: req.body.gender,
+           uid : req.body.uid,
+           qualification : req.body.qualification
+        }) ;
+    // newClient.img.data = fs.readFileSync(req.body.image);
+    // newClient.img.contentType = 'image/png';
+    Lawyer.register(newLawyer, req.body.password , function(err , client){
+        if(err){
+            console.log(err);
+            res.redirect("/");
+        }
+        // res.redirect("/");
+        console.log(newLawyer);
+        passport.authenticate("lawyerlocal")(req,res,function(){
+            // req.flash("success");
+            res.render("first",{currentUser: req.user.username});
+        });
+    });
+});
+
+
+
+
 
 app.post("/register",function(req,res){
-    var newClient = new Client({username : req.body.username , name:req.body.name, email:req.body.email, mobile:req.body.mobile, dob:req.body.dob}) ;
+    var addr = req.body.address + " ," + req.body.city + " = " + req.body.pincode + req.body.state ;  
+    var newClient = new Client({username : req.body.username ,
+         name:req.body.name,
+          email:req.body.email,
+           mobile:req.body.mobile, 
+           dob:req.body.dob,
+           address : addr,
+           gender: req.body.gender
+        }) ;
+    // newClient.img.data = fs.readFileSync(req.body.image);
+    // newClient.img.contentType = 'image/png';
     Client.register(newClient, req.body.password , function(err , client){
         if(err){
             console.log(err);
-            return res.render("first");
+            res.redirect("/");
         }
         // res.redirect("/");
         passport.authenticate("local")(req,res,function(){

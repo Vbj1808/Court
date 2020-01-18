@@ -4,6 +4,7 @@ const port = 3400 ;
 const main = require("./routers/main");
 const mongoose = require("mongoose");
 const Client = require("./models/client");
+const Lawyer = require("./models/lawyer");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -13,7 +14,7 @@ mongoose.Promise = global.Promise;
 
 const databaseUri = process.env.MONGODB_URI || 'mongodb://localhost/yelp_camp';
 
-mongoose.connect('mongodb://localhost:27017/myapp', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://rclemsmith:Smith_2000@court-kddyl.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -29,7 +30,10 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(Client.authenticate()));
+passport.use('lawyerlocal',new LocalStrategy(Lawyer.authenticate()));
 passport.serializeUser(Client.serializeUser());
 passport.deserializeUser(Client.deserializeUser());
+passport.serializeUser(Lawyer.serializeUser());
+passport.deserializeUser(Lawyer.deserializeUser());
 
 app.listen(process.env.PORT || 3400, process.env.IP, () => console.log('Example app listening on port ' + process.env.PORT ));

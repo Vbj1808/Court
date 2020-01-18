@@ -7,7 +7,10 @@ var ClientSchema = new mongoose.Schema({
     name: String,
     dob: Date,
     mobile: Number,
-    email: String
+    gender: String,
+    email: String,
+    address : String,
+    img: { data: Buffer, contentType: String }
 });
 
 ClientSchema.plugin(passportLocalMongoose)

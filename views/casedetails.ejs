@@ -1,0 +1,234 @@
+<%- include ("partials/header") %>
+<style type="text/css">
+    .h5{
+	border: 2px solid grey;
+	width: 250px;
+	border-radius: 25px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 420px;
+	text-align: center;
+	background-color: #e7f20a;
+	color: #db0000;
+}
+
+
+.container{
+	margin-top: 50px;
+	border: 2px solid black;
+	border-radius: 40px;
+	width: 100%;
+	height: auto;
+	margin: auto center;
+	padding-top: 30px;
+	background-color: rgba(228,228,228,1);
+	margin-bottom: 50px;
+}
+
+#hr{
+	border: 2px solid black;
+	border-radius: 15px;
+	width: 965px;
+	margin-bottom: 30px;
+}
+
+.l3{
+	margin-left: 70px;
+	margin-bottom: 40px;
+}
+
+.l2{
+	margin-left: 180px;
+	margin-bottom: 40px;
+}
+
+.l1{
+	margin-top: 40px;
+	margin-left: 70px;
+	margin-bottom: 40px;
+}
+
+.l5{	
+	margin-left: 70px;
+	margin-bottom: 40px;
+}
+
+.l4{
+	margin-left: 184px;
+	margin-bottom: 40px;
+}
+
+.l6{
+	margin-left: 184px;
+	margin-bottom: 40px;
+}
+
+.l7{
+	margin-top: 40px;
+	margin-left: 70px;
+	margin-bottom: 20px;
+}
+
+.l8{
+	margin-left: 140px;
+	margin-bottom: 20px;
+}
+
+.l9{
+	margin-top: 30px;
+	margin-left: 70px;
+	margin-bottom: 45px;
+}
+
+.l11{
+	margin-left: 70px;
+	margin-bottom: 45px;
+}
+
+.l10{
+	margin-left: 140px;
+	margin-bottom: 45px;
+}
+
+.l12{
+	margin-left: 140px;
+	margin-bottom: 45px;
+}
+
+#desc{
+	margin-top: 40px;
+	margin-left: 70px;
+	margin-bottom: 45px;
+	margin-right: 70px;
+}
+
+#casename{
+	margin-left: 140px;
+	width: 200px;
+}
+
+#cliname{
+	margin-left: 70px;
+	width: 200px;
+}
+
+#casetype{
+	margin-left: 140px;
+	margin-right: 70px;
+	width: 200px;
+}
+
+#lawname{
+	margin-left: 59px;
+	margin-right: 70px;
+	width: 200px;
+}
+
+#casedate{
+	margin-left: 135px;
+	width: 200px;
+}
+
+#lawid{
+	margin-left: 90px;
+	margin-right: 70px;
+	width: 200px;
+}
+
+#first{
+	margin-left: 40px;
+	width: 200px;
+}
+
+#next{
+	margin-left: 40px;
+	width: 200px;
+}
+
+
+
+#status{
+	margin-left: 144px;
+	width: 200px;
+}
+
+#court{
+	margin-left: 120px; 
+	width: 200px;
+}
+
+#judge{
+	margin-left: 155px;
+	width: 200px;
+}
+
+#report{
+	margin-left: 145px;
+	width: 200px;
+}
+</style>
+<div class="container">		
+	<h5 class="h5">CASE DETAILS</h5>	
+	<form>
+		<div>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l1">CASE</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="casename"><%= caseNow.name%></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l2">TYPE</label>	
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="casetype"><%= caseNow.type%></label>		
+		</div>
+
+		<div>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l3">CLIENT NAME</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="cliname"><%= caseNow.author.name%></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l4">LAWYER NAME</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="lawname"><%= caseNow.lawyer%></label>
+		</div>
+
+		<div>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l5">DATE</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="casedate"><%= caseNow.createdAt%></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l6">LAWYER ID</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="lawid"></label>
+			
+		</div>
+
+		<hr id="hr">
+
+		<h5 class="h5">CASE DESCRIPTION</h5>
+
+		<div style="word-wrap: break-word; text-align: justify;">		
+			<label style="font-family: 'Poppins', sans-serif; font-size: 16px;" id="desc"><%= caseNow.description%></label>
+		</div>
+
+		<hr id="hr">
+
+		<h5 class="h5">CASE STATUS</h5>
+
+		<div>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l7">FIRST HEARING DATE</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="first"></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l8">NEXT HEARING DATE</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="next"></label>			
+		</div>
+
+		<div>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l9">STATUS</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="status"></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l10">REPORT</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="report"></label>			
+		</div>
+
+		<div>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l11">COURT NO</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="court"></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l12">JUDGE</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="judge"></label>			
+		</div>
+
+
+
+
+	</form>
+    </div>
+    
+    <%- include ("partials/footer") %>

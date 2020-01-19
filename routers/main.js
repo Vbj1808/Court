@@ -41,6 +41,20 @@ app.get("/",(req,res) => {
     });
 });
 
+app.get("/:id/casedetails",(req,res)=>{
+    Case.findById(req.params.id,(err,found)=>{
+        res.render("casedetails",{currentUser: null , caseNow: found});
+    });
+    
+});
+
+app.get("/:id/modifycase",(req,res)=>{
+    Case.findById(req.params.id,(err,found)=>{
+        res.render("caseinput",{currentUser: null , caseNow: found});
+    });
+    
+});
+
 app.get("/:id/newcase",(req,res) =>{
     if(req.isAuthenticated()){
         Lawyer.find({},(err,found) => {

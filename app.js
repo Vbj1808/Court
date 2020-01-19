@@ -30,10 +30,10 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(Client.authenticate()));
-passport.use('lawyerlocal',new LocalStrategy(Lawyer.authenticate()));
+// passport.use('lawyerlocal',new LocalStrategy(Lawyer.authenticate()));
 passport.serializeUser(Client.serializeUser());
 passport.deserializeUser(Client.deserializeUser());
-passport.serializeUser(Lawyer.serializeUser());
-passport.deserializeUser(Lawyer.deserializeUser());
+// passport.serializeUser(Lawyer.serializeUser());
+// passport.deserializeUser(Lawyer.deserializeUser());
 
-app.listen(process.env.PORT || 3400, process.env.IP, () => console.log('Example app listening on port ' + process.env.PORT ));
+app.listen(process.env.PORT || 3500, process.env.IP, () => console.log('Example app listening on port ' + process.env.PORT ));

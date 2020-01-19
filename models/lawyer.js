@@ -1,9 +1,8 @@
 var mongoose = require("mongoose");
-var passportLocalMongoose = require("passport-local-mongoose");
 
 var LawyerSchema = new mongoose.Schema({
     username: String,
-    password: String,
+    password: { type : String, bcrypt : true } ,
     name: String,
     gender: String,
     dob: Date,
@@ -14,6 +13,5 @@ var LawyerSchema = new mongoose.Schema({
     address: String
 });
 
-LawyerSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("Lawyer", LawyerSchema);

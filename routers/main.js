@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 const Case = require("../models/cases");
 const Lawyer = require("../models/lawyer");
 const fs = require("fs");
+const bcrypt = require("bcrypt");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(cookieParser());
@@ -42,12 +43,19 @@ app.get("/",(req,res) => {
 
 app.get("/:id/newcase",(req,res) =>{
     if(req.isAuthenticated()){
-        res.render("newcase",{currentUser: req.user, userId : req.params.id});
-        console.log("From Home Page: " + req.user.username);
+        Lawyer.find({},(err,found) => {
+            if(found){
+                res.render("newcase",{currentUser: req.user, userId : req.params.id, lawyers: JSON.stringify(found)});
+                console.log("From Home Page: " + req.user.username);
+            }else{
+                console.log(err);
+            }
+            
+        });
+        
     }else{
         res.render("newcase",{currentUser: null});
     }
-     res.render("",{userId : req.params.id});
     });
 
 app.get("/logout",(req, res) =>{
@@ -108,30 +116,63 @@ app.get("/lawregister",(req,res) => {
 });
 
 app.post("/lawregister",(req,res) => {
-    var addr = req.body.address + " ," + req.body.city + " = " + req.body.pincode + req.body.state ;  
-    var newLawyer = new Lawyer({username : req.body.username ,
-         name:req.body.name,
-          email:req.body.email,
-           mobile:req.body.mobile, 
-           dob:req.body.dob,
-           address : addr,
-           gender: req.body.gender,
-           uid : req.body.uid,
-           qualification : req.body.qualification
-        }) ;
+
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(req.body.password, salt, function(err, hash) {
+            // Store hash in your password DB.
+            var addr = req.body.address + " ," + req.body.city + " = " + req.body.pincode + req.body.state ;  
+            var newLawyer = new Lawyer({username : req.body.username ,
+                 name:req.body.name,
+                  email:req.body.email,
+                   mobile:req.body.mobile, 
+                   dob:req.body.dob,
+                   address : addr,
+                   gender: req.body.gender,
+                   uid : req.body.uid,
+                   qualification : req.body.qualification,
+                   password: hash
+                }) ;
+
+                Lawyer.create(newLawyer, function(err , client){
+                    if(err){
+                        console.log(err);
+                        res.redirect("/");
+                    }
+                    res.redirect("/");
+                    console.log(newLawyer);
+                });
+        });
+    });
+    
     // newClient.img.data = fs.readFileSync(req.body.image);
     // newClient.img.contentType = 'image/png';
-    Lawyer.register(newLawyer, req.body.password , function(err , client){
+    
+});
+
+app.post("/lawlogin",(req,res) =>{
+
+    Lawyer.find({username: req.body.lawusername},(err,found) => {
         if(err){
-            console.log(err);
-            res.redirect("/");
+            console.log(err)
+        }else{
+            if(Array.isArray(found) && found.length){
+            console.log(found);
+            console.log("Passsss : " + req.body.lawpassword);
+            console.log("Hasshhhh : " + found[0].password);
+            bcrypt.compare(req.body.lawpassword, found[0].password, function(err, ress) {
+                if(ress === true){
+                    console.log("Lawyer Login Successful")
+                    res.redirect("/");
+                }else{
+                    console.log(err);
+                    res.redirect("/lawregister");
+                }
+            });
+        }else{
+            res.redirect("/lawregister");
         }
-        // res.redirect("/");
-        console.log(newLawyer);
-        passport.authenticate("lawyerlocal")(req,res,function(){
-            // req.flash("success");
-            res.render("first",{currentUser: req.user.username});
-        });
+        }
+        
     });
 });
 

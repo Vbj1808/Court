@@ -131,20 +131,25 @@ input:focus{
 
 		<div>
 			<label  style="font-family: 'Poppins', sans-serif; font-size: 18px;" class="l2">Type</label>
-			<select name="type" class="input2">
-				<option>Civil</option>
-				<option selected="true">Criminal</option> 
-				<option>Enforcement</option>
-				<option>Estate Administration</option>
-				<option>Property Registration</option>
-				<option>Notarial Services</option>
+			<select id="casetype" name="type" class="input2" >
+				<option selected="true">Select</option>
+				<option >Civil</option>
+				<option >Criminal</option> 
+				<option>Family</option>
+				<option>Business</option>
+				<option>Juvenile</option>
+				<option>Immigration</option>
+				<option>Litigation</option>
 			</select>
 		</div>
 
 
 		<div>
 			<label style="font-family: 'Poppins', sans-serif; font-size: 18px;" class="l4">Lawyer</label>
-			<input type="text" name="lawyer" class="input4" placeholder="lawyer">
+			<select id="lawyerselect" name="lawyer" class="input4" >
+				<option selected="true">Select</option>
+				
+			</select>
 		</div>
 
 		<div>
@@ -160,5 +165,84 @@ input:focus{
 		
 	</form>
 	</div>
+	<script>
+			document.getElementById("casetype").addEventListener("change",function(){
+					 var asec = document.getElementById("casetype").value; 
+					 var lawsel = document.getElementById("lawyerselect");
+					//  alert(asec);
+					 var layers = JSON.parse('<%-lawyers %>');
+					 if(asec === "Civil"){
+						layers.forEach(function(lawyer){ 
+							 if(lawyer.qualification == "Civil" || lawyer.qualification == "General Practice"){
+								var option = document.createElement("option");
+								option.text = lawyer.name;
+								lawsel.add(option);
+								console.log(lawyer.name);
+				
+						 	 }	 });
+					}
+					if(asec === "Criminal"){
+						layers.forEach(function(lawyer){ 
+							 if(lawyer.qualification == "Criminal" || lawyer.qualification == "General Practice"){
+								var option = document.createElement("option");
+								option.text = lawyer.name;
+								lawsel.add(option);
+								console.log(lawyer.name);
+				
+						 	 }	 });
+					}
+					if(asec === "Family"){
+						layers.forEach(function(lawyer){ 
+							 if(lawyer.qualification == "General Practice"){
+								var option = document.createElement("option");
+								option.text = lawyer.name;
+								lawsel.add(option);
+								console.log(lawyer.name);
+				
+						 	 }	 });
+					}
+					if(asec === "Business"){
+						layers.forEach(function(lawyer){ 
+							 if(lawyer.qualification == "Private Sector" || lawyer.qualification == "Corporate"){
+								var option = document.createElement("option");
+								option.text = lawyer.name;
+								lawsel.add(option);
+								console.log(lawyer.name);
+				
+						 	 }	 });
+					}
+					if(asec === "Juvenile"){
+						layers.forEach(function(lawyer){ 
+							 if(lawyer.qualification == "Juvenile"){
+								var option = document.createElement("option");
+								option.text = lawyer.name;
+								lawsel.add(option);
+								console.log(lawyer.name);
+				
+						 	 }	 });
+					}
+					if(asec === "Immigration"){
+						layers.forEach(function(lawyer){ 
+							 if(lawyer.qualification == "Immigration"){
+								var option = document.createElement("option");
+								option.text = lawyer.name;
+								lawsel.add(option);
+								console.log(lawyer.name);
+				
+						 	 }	 });
+					}
+					if(asec === "Litigation"){
+						layers.forEach(function(lawyer){ 
+							 if(lawyer.qualification == "Human Rights"){
+								var option = document.createElement("option");
+								option.text = lawyer.name;
+								lawsel.add(option);
+								console.log(lawyer.name);
+				
+						 	 }	 });
+					}
+				});
+
+	</script>
 </body>
 </html>

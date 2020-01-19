@@ -172,6 +172,7 @@ input:focus{
 					//  alert(asec);
 					 var layers = JSON.parse('<%-lawyers %>');
 					 if(asec === "Civil"){
+						 lawsel.options.length=0;
 						layers.forEach(function(lawyer){ 
 							 if(lawyer.qualification == "Civil" || lawyer.qualification == "General Practice"){
 								var option = document.createElement("option");
@@ -182,6 +183,7 @@ input:focus{
 						 	 }	 });
 					}
 					if(asec === "Criminal"){
+						lawsel.options.length=0
 						layers.forEach(function(lawyer){ 
 							 if(lawyer.qualification == "Criminal" || lawyer.qualification == "General Practice"){
 								var option = document.createElement("option");
@@ -192,6 +194,7 @@ input:focus{
 						 	 }	 });
 					}
 					if(asec === "Family"){
+						lawsel.options.length=0
 						layers.forEach(function(lawyer){ 
 							 if(lawyer.qualification == "General Practice"){
 								var option = document.createElement("option");
@@ -202,6 +205,7 @@ input:focus{
 						 	 }	 });
 					}
 					if(asec === "Business"){
+						lawsel.options.length=0
 						layers.forEach(function(lawyer){ 
 							 if(lawyer.qualification == "Private Sector" || lawyer.qualification == "Corporate"){
 								var option = document.createElement("option");
@@ -212,6 +216,7 @@ input:focus{
 						 	 }	 });
 					}
 					if(asec === "Juvenile"){
+						lawsel.options.length=0
 						layers.forEach(function(lawyer){ 
 							 if(lawyer.qualification == "Juvenile"){
 								var option = document.createElement("option");
@@ -222,6 +227,7 @@ input:focus{
 						 	 }	 });
 					}
 					if(asec === "Immigration"){
+						lawsel.options.length=0
 						layers.forEach(function(lawyer){ 
 							 if(lawyer.qualification == "Immigration"){
 								var option = document.createElement("option");
@@ -232,6 +238,7 @@ input:focus{
 						 	 }	 });
 					}
 					if(asec === "Litigation"){
+						lawsel.options.length=0
 						layers.forEach(function(lawyer){ 
 							 if(lawyer.qualification == "Human Rights"){
 								var option = document.createElement("option");

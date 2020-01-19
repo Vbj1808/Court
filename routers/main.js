@@ -94,6 +94,37 @@ app.get("/:id/cases",(req, res) => {
         }
     });
 });
+
+app.get("/courtlogin",(req,res)=>{
+
+    res.render("courtlogin",{currentUser:null});
+});
+
+app.post("/courtlogin",(req,res) => {
+    if(req.body.username === req.body.password){
+    Case.find({},(err,found) => {
+        if(err){
+            console.log(err);
+        }else{
+            var use = {name : "Admin"};
+            res.render("courtcases",{currentUser: use, caseNow: found});
+        }
+    })
+    }else{
+        res.redirect("/");
+    }
+});
+
+
+
+app.get("/:id/lawcases",(req, res) => {
+    
+    Lawyer.findById(req.params.id,(err,found)=>{
+        Case.find({lawyer: found.name},(err,foundCase)=>{
+            res.render("cases",{caseNow: foundCase, currentUser: found.name});
+        });
+    });
+});
 app.get("/login", (req,res) => res.render("clilogin"));
 
 app.get("/register", (req,res) => {
@@ -149,6 +180,13 @@ app.post("/lawregister",(req,res) => {
     
 });
 
+app.get("/:id/lawdashboard",(req,res) =>{
+    Lawyer.findById(req.params.id,(err,found) =>{
+        res.render("lawdashboard",{currentUser: found,lawyerNow: found});
+    });
+    
+});
+
 app.post("/lawlogin",(req,res) =>{
 
     Lawyer.find({username: req.body.lawusername},(err,found) => {
@@ -161,8 +199,7 @@ app.post("/lawlogin",(req,res) =>{
             console.log("Hasshhhh : " + found[0].password);
             bcrypt.compare(req.body.lawpassword, found[0].password, function(err, ress) {
                 if(ress === true){
-                    console.log("Lawyer Login Successful")
-                    res.redirect("/");
+                    res.redirect("/" + found[0]._id + "/lawdashboard");
                 }else{
                     console.log(err);
                     res.redirect("/lawregister");

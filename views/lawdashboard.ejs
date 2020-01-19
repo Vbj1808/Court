@@ -1,0 +1,411 @@
+<%- include ("partials/header") %>
+<style id="applicationStylesheet" type="text/css">
+	.mediaViewInfo {
+		--web-view-name: dashboard;
+		--web-view-id: dashboard;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: dashboard;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#dashboard {
+		position: absolute;
+		width: 1366px;
+		height: 768px;
+		background-color: rgba(255,255,255,1);
+		overflow: hidden;
+		--web-view-name: dashboard;
+		--web-view-id: dashboard;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	.Line_9 {
+		overflow: visible;
+		position: absolute;
+		width: 4px;
+		height: 674.504px;
+		left: 311.776px;
+		top: 93.5px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	.Line_10 {
+		overflow: visible;
+		position: absolute;
+		width: 1492.371px;
+		height: 1px;
+		left: -63.185px;
+		top: 93.5px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	.Ellipse_1 {
+		position: absolute;
+		overflow: visible;
+		width: 67px;
+		height: 63px;
+		left: 1251px;
+		top: 15px;
+	}
+	#Harsha_Shena {
+		position: absolute;
+		left: 1019px;
+		top: 23px;
+		overflow: visible;
+		width: 212px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: italic;
+		font-weight: normal;
+		font-size: 35px;
+		color: rgba(167,158,225,0.98);
+	}
+	#Repeat_Grid_3 {
+		position: absolute;
+		width: 315px;
+		height: 259px;
+		left: 0px;
+		top: 180.964px;
+		overflow: hidden;
+	}
+	#Repeat_Grid_3_0 {
+		position: absolute;
+		width: 440px;
+		height: 69px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	.Rectangle_26 {
+		position: absolute;
+		overflow: visible;
+		width: 440px;
+		height: 69px;
+		left: 0px;
+		top: 0px;
+	}
+	#_________Dashboard_ {
+		position: absolute;
+		left: 45px;
+		top: 6px;
+		overflow: hidden;
+		width: 351px;
+		height: 63px;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 25px;
+		color: rgba(248,248,250,0.98);
+	}
+	#Repeat_Grid_3_1 {
+		position: absolute;
+		width: 440px;
+		height: 69px;
+		left: 0px;
+		top: 93px;
+		overflow: visible;
+	}
+	.Rectangle_26_v {
+		position: absolute;
+		overflow: visible;
+		width: 440px;
+		height: 69px;
+		left: 0px;
+		top: 0px;
+	}
+	#_________Calendar_ {
+		position: absolute;
+		left: 45px;
+		top: 6px;
+		overflow: hidden;
+		width: 351px;
+		height: 63px;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 25px;
+		color: rgba(248,248,250,0.98);
+	}
+	#Repeat_Grid_3_2 {
+		position: absolute;
+		width: 440px;
+		height: 69px;
+		left: 0px;
+		top: 186px;
+		overflow: visible;
+	}
+	.Rectangle_26_y {
+		position: absolute;
+		overflow: visible;
+		width: 440px;
+		height: 69px;
+		left: 0px;
+		top: 0px;
+	}
+	#_________Messages_ {
+		position: absolute;
+		left: 45px;
+		top: 6px;
+		overflow: hidden;
+		width: 351px;
+		height: 63px;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 25px;
+		color: rgba(248,248,250,0.98);
+	}
+	#Dashboard_ {
+		position: absolute;
+		left: 600px;
+		top: 40px;
+		overflow: visible;
+		width: 358px;
+		height: 67px;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 45px;
+		color: rgba(45,14,249,0.98);
+	}
+	#Welcome_back__Harsha_ {
+		position: absolute;
+		left: 600px;
+		top: 90px;
+		overflow: visible;
+		width: 309px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 30px;
+		color: rgba(5,3,22,0.98);
+	}
+	#Documents_ {
+		position: absolute;
+		left: 710.851px;
+		top: 676px;
+		overflow: hidden;
+		width: 217px;
+		height: 43px;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(5,3,22,0.98);
+	}
+	#Payments {
+		position: absolute;
+		left: 1028.967px;
+		top: 676px;
+		overflow: visible;
+		width: 141px;
+		height: 43px;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(5,3,22,0.98);
+	}
+	#Case_history_ {
+		position: absolute;
+		left: 402.524px;
+		top: 675px;
+		overflow: hidden;
+		width: 221px;
+		height: 56px;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(5,3,22,0.98);
+	}
+	#Profile {
+		position: absolute;
+		left: 434.406px;
+		top: 409.015px;
+		overflow: visible;
+		width: 222px;
+		height: 56px;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(5,3,22,0.98);
+	}
+	#New_Case {
+		position: absolute;
+		left: 727.098px;
+		top: 409.386px;
+		overflow: visible;
+		width: 211px;
+		height: 42px;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(5,3,22,0.98);
+	}
+	#My_cases_ {
+		position: absolute;
+		left: 1010px;
+		top: 409.274px;
+		overflow: hidden;
+		width: 232px;
+		height: 64px;
+		text-align: left;
+		font-family: Segoe UI;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(5,3,22,0.98);
+	}
+	.Rectangle_37 {
+		position: absolute;
+		overflow: visible;
+		width: 145px;
+		height: 147.899px;
+		left: 414.436px;
+		top: 490.979px;
+	}
+	.Rectangle_37_ {
+		position: absolute;
+		overflow: visible;
+		width: 145px;
+		height: 147.899px;
+		left: 717.436px;
+		top: 490.979px;
+	}
+	.Rectangle_37_ba {
+		position: absolute;
+		overflow: visible;
+		width: 145px;
+		height: 147.899px;
+		left: 1020.436px;
+		top: 490.979px;
+	}
+	.Rectangle_37_bb {
+		position: absolute;
+		overflow: visible;
+		width: 145px;
+		height: 146.757px;
+		left: 410.436px;
+		top: 245.121px;
+	}
+	.Rectangle_37_bc {
+		position: absolute;
+		overflow: visible;
+		width: 145px;
+		height: 146.757px;
+		left: 712.436px;
+		top: 245.121px;
+	}
+	.Rectangle_37_bd {
+		position: absolute;
+		overflow: visible;
+		width: 145px;
+		height: 146.757px;
+		left: 1014.436px;
+		top: 245.121px;
+	}
+	#cases {
+		position: absolute;
+		width: 88px;
+		height: 87px;
+		left: 1043px;
+		top: 274px;
+		overflow: visible;
+	}
+	#casehistory {
+		position: absolute;
+		width: 92px;
+		height: 91px;
+		left: 434px;
+		top: 522px;
+		overflow: visible;
+	}
+	#profile {
+		position: absolute;
+		width: 91px;
+		height: 91px;
+		left: 435px;
+		top: 274px;
+		overflow: visible;
+	}
+	#newcase {
+		position: absolute;
+		width: 98px;
+		height: 98px;
+		left: 736px;
+		top: 262px;
+		overflow: visible;
+	}
+	#payment {
+		position: absolute;
+		width: 91px;
+		height: 91px;
+		left: 1051px;
+		top: 522px;
+		overflow: visible;
+	}
+	#docum {
+		position: absolute;
+		width: 92px;
+		height: 105px;
+		left: 742px;
+		top: 522px;
+		overflow: visible;
+	}
+</style>
+
+<div id="dashboard">
+	
+	<div id="Dashboard_">
+		<span>Dashboard</span>
+	</div>
+	<div id="Welcome_back__Harsha_">
+		<span>Welcome back <%= lawyerNow.name %></span>
+	</div>
+	<div id="Profile">
+		<span>Profile</span>
+	</div>
+	<div id="New_Case">
+		<span><a href="/<%= lawyerNow._id %>/lawcases">My Cases</a></span>
+	</div>
+	<div id="My_cases_">
+		<span><a href="/<%= lawyerNow._id %>/casehistory">Case History</a></span><br>
+	</div>
+	<svg class="Rectangle_37_bb">
+		<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Rectangle_37_bb" rx="43" ry="43" x="0" y="0" width="145" height="146.757">
+		</rect>
+	</svg>
+	<svg class="Rectangle_37_bc">
+	<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Rectangle_37_bc" rx="43" ry="43" x="0" y="0" width="145" height="146.757">
+		</rect>
+	
+	</svg>
+	<svg class="Rectangle_37_bd">
+		<rect fill="rgba(255,255,255,1)" stroke="rgba(112,112,112,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Rectangle_37_bd" rx="43" ry="43" x="0" y="0" width="145" height="146.757">
+		</rect>
+	</svg>
+	<a href="/<%= lawyerNow._id %>/lawcases"><img id="cases" src="https://i.ibb.co/xmYJgGb/41-UYGBv-Q8-L.png" ></a>
+	<img id="profile" src="https://i.ibb.co/7rTVszy/03-1-Advocate-512.png">
+	<a href="/<%= lawyerNow._id %>/lawcases"><img id="newcase" src="https://i.ibb.co/T0v0QzN/img-159245.png"></a>
+</div>
+<%- include ("partials/footer") %>

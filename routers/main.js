@@ -11,6 +11,19 @@ const cookieParser = require("cookie-parser");
 const Case = require("../models/cases");
 const Lawyer = require("../models/lawyer");
 const fs = require("fs");
+const upload = require("express-fileupload");
+app.use(upload());
+var multer  = require('multer');
+const multerConf = {
+    // storage : multer.diskStorage({
+    //     destination : function(req,file,next){
+    //             next(null,'../public/images');
+    //     }
+    // }),
+    filename : function(req,file,next){
+        console.log(file);
+    }
+}
 const bcrypt = require("bcrypt");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -92,6 +105,7 @@ app.post("/:id/newcase",(req,res) => {
             name : found[0].name,
             uid : found[0].uid
         }
+        
         var newCase = new Case({name: req.body.casename, 
             type: req.body.type,
             description: req.body.desc,
@@ -102,7 +116,8 @@ app.post("/:id/newcase",(req,res) => {
             status : "Not Updated",
             comment : "Not Updated",
             courtno : "Not Updated",
-            judge : "Not Updated"
+            judge : "Not Updated",
+            file : null
 
         });
             Case.create(newCase, (err, newcase) => {
@@ -118,14 +133,25 @@ app.post("/:id/newcase",(req,res) => {
     
 });
 
+app.get('/casetypes',(req,res)=>{
+    res.render("typeofcase",{currentUser: null});
+});
 
-app.post("/:id/modifycase",(req,res)=>{
+app.post("/:id/modifycase",(req,res,)=>{
+    // if(req.files){
+    //     console.log(req.files.docs);
+    // }
+    // var fil = {data: Buffer, contentType: String};
+    // fil.data = fs.readFileSync((req.files.docs));
+    // fil.contentType = 'image/png';
+
     Case.findByIdAndUpdate(req.params.id,{$set:{firsthearing : req.body.firsthearing, 
         nexthearing: req.body.nexthearing , 
         status: req.body.status, 
         comment : req.body.comment , 
         courtno: req.body.courtno, 
-        judge: req.body.judge}},{new:true},(err,updated) =>{
+        judge: req.body.judge, 
+        }},{new:true},(err,updated) =>{
             if(err){
                 console.log(err)
             }else{

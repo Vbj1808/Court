@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
+  
+  
+  <style type="text/css">
+    .carousel-inner img {
+      width: 100%;
+      height: 100%;
+    }
+    h1{
+      text-align: center;
+      padding-top: 20px;
+      font-family: "Times New Roman";
+      float: center;
+    }
+    .top {
+      background-color: rgba(228,228,228,1);
+      height: 100px;
+      margin-bottom: 10px;
+    }
+    .topi {
+      height: 100px;
+      float: left;
+    }
+    #btmi {
+      height: 100px;
+      float: right;
+    }
+
+    .btn-outline-secondary {
+      margin-left: 20px;
+    }
+    .sr {
+      float: right;
+      margin-right: 20px;
+    }
+    .dropbtn {
+       background-color: #4CAF50;
+       color: white;
+       padding: 16px;
+       font-size: 16px;
+       border: none;
+      }
+
+      
+
+/* The container <div> - needed to position the dropdown content */
+/* .dropdown {
+  position: relative;
+  float: right;
+}
+
+    .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+} */
+  a {
+    color: black;
+  }
+
+ .lbl {
+   float: right;
+   margin-right: 20px;
+   font-family: "Courier New";
+   font-size: 40px;;
+ }
+
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+a:link{
+  color: blue;
+}
+
+a:visited{
+  color: grey;
+}
+
+a:hover{
+  color: hotpink;
+
+}
+
+a:active{
+  color: red;
+}
+
+h2{
+  text-align: center;
+}
+.carousel-control-prev-icon{
+  font-size: 100px;
+
+}
+
+.container{
+  width: 100%;
+}
+h3{
+  text-align: center;
+  color: blue;
+}
+p{
+  font-size: 24px;
+}
+form {
+  width: 100%;
+}
+  </style>
+  
+</head>
+<body>
+<div class="top">
+    <img class="topi" src="https://i.ya-webdesign.com/images/india-transparent-emblem.png">
+    <img id="btmi"src="http://www.vectorsland.com/imgd/l25824-lady-justice-logo-62987.png">
+    <h1>Indian Courts</h1>
+  </div>
+  <hr>
+  <h2>Types of Case</h2>
+<div class="container">
+  <div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://5.imimg.com/data5/DJ/IU/XQ/SELLER-22771868/criminal-law-500x500.jpg" alt="Criminal case"  >
+        <p>A criminal case, in common law jurisdictions, begins when a person suspected of a crime is <strong>indicted</strong> by a grand jury or otherwise charged with the offense by a government official called a <strong>prosecutor</strong> or <strong>district attorney</strong>.A criminal case may in some jurisdictions be settled before a <strong>trial</strong> through a <strong>plea bargain</strong>. Typically, in a plea bargain, the defendant agrees to plead guilty to a lesser charge than that which was originally brought by the grand jury or prosecutor. A defendant who goes to trial risks greater penalties than would normally be imposed through a plea bargain.</p>
+      </div>
+      <div class="carousel-item">
+        <img src="http://pcalawyers.com/images/civil-law.jpg" alt="civil-case" >
+        <p>A lawsuit brought to redress a private wrong such as breach of contract, encroachment, or negligence; or to enforce civil remedies such as compensation, damages, injunction. Also called civil action, civil proceedings, or civil suit.
+        Civil cases usually involve private disputes between <strong>persons</strong> or <strong>organizations</strong>.In civil cases,  cases are initiated (suits are filed) by a private party (the plaintiff); cases are usually decided by a judge  </p>
+
+      </div>
+       
+    </div>
+    
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
+<%- include ("partials/footer") %>

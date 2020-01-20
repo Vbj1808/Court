@@ -171,7 +171,7 @@
 </style>
 	<div class="container">		
 	<h5 class="h5">CASE DETAILS</h5>	
-	<form action="/<%= caseNow._id %>/modifycase" method="POST">
+	<form action="/<%= caseNow._id %>/modifycase" method="POST" enctype="multipart/form-data">
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l1">CASE</label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="casename"><%= caseNow.name%></label>
@@ -232,11 +232,24 @@
 			<input name="judge" type="text" id="judge">
 				
 		</div>
-
+		<!-- <div>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l11">Document</label>
+			<input type="file" id="fileInput" name="docs" multiple onchange="showname()">
+		</div> -->
 		<div>
 			<button type="submit" class="btn btn-primary" style="margin: auto; display: block; margin-bottom: 30px; margin-top: 30px;">MODIFY</button>
 		</div>
+		
 	</form>	
+	<!-- <script>
+	 function showname () {
+	  var name = document.getElementById('fileInput').value;
+	  alert(name); 
+      alert('Selected file: ' + name.files.item(0).name);
+      alert('Selected file: ' + name.files.item(0).size);
+      alert('Selected file: ' + name.files.item(0).type);
+    };
+	</script> -->
 	
 	</div>
 	<%- include ("partials/footer") %>

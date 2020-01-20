@@ -12,7 +12,10 @@ const Case = require("../models/cases");
 const Lawyer = require("../models/lawyer");
 const fs = require("fs");
 const upload = require("express-fileupload");
+const PendingCase = require("../models/pending");
 app.use(upload());
+const ejs = require("ejs");
+const pdf = require("html-pdf");
 var multer  = require('multer');
 const multerConf = {
     // storage : multer.diskStorage({
@@ -57,6 +60,15 @@ app.get("/",(req,res) => {
 app.get("/:id/casedetails",(req,res)=>{
     Case.findById(req.params.id,(err,found)=>{
         res.render("casedetails",{currentUser: null , caseNow: found});
+        
+    });
+    
+});
+
+app.get("/:id/pending",(req,res)=>{
+    PendingCase.find({"lawyer.id" : req.params.id},(err,found)=>{
+        console.log(found);
+        res.render("accept",{currentUser: found[0] , currentCase: found});
     });
     
 });
@@ -92,6 +104,7 @@ app.get("/logout",(req, res) =>{
 
 app.post("/:id/newcase",(req,res) => {
     
+   
     Lawyer.find({name : req.body.lawyer},(err,found)=>{
         console.log(found);
         if(err){
@@ -103,24 +116,17 @@ app.post("/:id/newcase",(req,res) => {
         }
         var lawyerr = {
             name : found[0].name,
-            uid : found[0].uid
+            id : found[0]._id
         }
         
-        var newCase = new Case({name: req.body.casename, 
+        var newCase = new PendingCase({name: req.body.casename, 
             type: req.body.type,
             description: req.body.desc,
             lawyer : lawyerr,
             author : author,
-            firsthearing : null,
-            nexthearing : null,
-            status : "Not Updated",
-            comment : "Not Updated",
-            courtno : "Not Updated",
-            judge : "Not Updated",
-            file : null
 
         });
-            Case.create(newCase, (err, newcase) => {
+            PendingCase.create(newCase, (err, newcase) => {
             if(err){
             console.log(err)
             }else{

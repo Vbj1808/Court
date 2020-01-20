@@ -1,0 +1,74 @@
+<%- include ("partials/header") %>
+<style>
+    .container{
+      height:100%;
+      width:75%;
+      background-color:white;
+      border-width:50%;
+      border-height:100%;
+      border-radius: 15%;
+      border-style:solid;
+      border-color: rgb(228,228,228,1);
+  
+  
+    }
+  .column1,.column2,.column3,.column4{
+    float:left;
+    width:50%;
+    text-align: left;
+  }
+  .row:after{
+    content:"";
+    display:table;
+    clear:both;
+  }
+  
+  </style>
+  <centre>
+    <div class="container" >
+    <div class="row"><br>
+    <div class="column1"> CaseName : <%= currentCase.name%></div>
+    <div class="column2">
+    <label> </label>
+  </div>
+    <div class="column3"> ClientName : <%= currentCase.author.name%></div>
+    <div class="column4">
+    <label> </label>
+  </div>
+  </div><br>
+  
+   <div class="row">
+    <div class="column1">  CaseType : <%= currentCase.type%></div>
+    <div class="column2">
+    <label> </label>
+  </div>
+  <div class="column3"> Date : <%= currentCase.createdAt%></div>
+    <div class="column4">
+    <label> </label>
+  </div>
+  </div><br>
+  <div class="row">
+    <div class="column1"> CaseDescription : <%= currentCase.description%></div>
+    <label> </label>
+  </div><br>
+  <div class="row">
+    <div class="column2">
+   &nbsp&nbsp&nbsp<button type="button"> Accept</button> 
+  </div>
+  <div class="column3">
+   <button type="button">Reject</button> 
+  </div>
+</centre>
+  </div><br><br>
+
+  
+  
+  
+  
+  
+  
+  
+  
+    </div>
+
+<%- include ("partials/footer") %>

@@ -41,16 +41,16 @@ input{
 		  <!-- <div class="form-row"> -->
 		  	<div class="form-group">
 		    	<label class="margins"  for="inputName">Name</label>
-		    	<input  name = "name" type="text" class="form-control" id="name" placeholder="name">
+		    	<input required name = "name" type="text" class="form-control" id="name" placeholder="name">
 			</div>
 			<div class="form-row">
 		    <div class="form-group">
 		    	<label class="margins" for="inputName">DOB</label>
-		    	<input name="dob" type="date" class="form-control" id="date" placeholder="date">
+		    	<input required name="dob" type="date" class="form-control" id="date" placeholder="date">
 			</div>
 			<div class="form-group col-md-6">
 		    	<label class="margins" for="inputgender">Gender</label>
-		    	<select  name="gender" id="inputgender" class="form-control">
+		    	<select required name="gender" id="inputgender" class="form-control">
 		        <option selected>Choose...</option>
 		        <option>Male</option>
 		        <option>Female</option>
@@ -59,35 +59,35 @@ input{
 			</div>		
 			<div class="form-group col-md-6">
 				<label class="margins1" for="contact">Contact Number</label>
-			  <input name="mobile" type="text" class="form-control" id="contact" placeholder="1234567890">
+			  <input required name="mobile" type="text" class="form-control" id="contact" placeholder="1234567890">
 			</div>	    	
 		    </div>
 		    <div class="form-group">
 		      <label  class="margins" for="inputEmail4">Email</label>
-		      <input   name="email" type="email" class="form-control" id="inputEmail4" placeholder="email">
+		      <input  required name="email" type="email" class="form-control" id="inputEmail4" placeholder="email">
 		    </div>
 		    <div class="form-group">
 		    	<label class="margins" for="inputUsername">Username</label>
-		    	<input  name="username" type="text" class="form-control" id="username" placeholder="username">
+		    	<input required name="username" type="text" class="form-control" id="username" placeholder="username">
 		    </div>
 		    <div class="form-group ">
 		      <label  class="margins" style="font-weight: bold" for="inputPassword4">Password</label>
-		      <input   name="password" type="password" class="form-control" id="inputPassword4" placeholder="password">
+		      <input required  name="password" type="password" class="form-control" id="inputPassword4" placeholder="password">
 		    </div>
 
 		  	
 		  <div class="form-group">
 		    <label class="margins1" for="inputAddress">Address</label>
-		    <input name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+		    <input required name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
 		  </div>
 		  <div class="form-row">
 		    <div class="form-group col-md-6">
 		      <label class="margins1" for="inputCity">City</label>
-		      <input  name="city" type="text" class="form-control" id="inputCity" placeholder="city">
+		      <input required name="city" type="text" class="form-control" id="inputCity" placeholder="city">
 		    </div>
 		    <div class="form-group col-md-4">
 		      <label for="inputState">State</label>
-		      <select  name="state" id="inputState" class="form-control">
+		      <select required name="state" id="inputState" class="form-control">
 		        <option selected>Choose...</option>
 		        <option>Andhra Pradesh</option>
 		        <option>Arunachal Pradesh</option>
@@ -122,7 +122,7 @@ input{
 		    </div>
 		    <div class="form-group col-md-2">
 		      <label for="inputZip">Zip</label>
-		      <input name="pincode" type="text" class="form-control" id="inputZip">
+		      <input required name="pincode" type="text" class="form-control" id="inputZip">
 		    </div>
 		  </div>
 		  <button type="submit" style="margin-left: 50%" class="btn btn-primary btn-lg">Register</button>

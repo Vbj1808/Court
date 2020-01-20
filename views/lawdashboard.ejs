@@ -383,7 +383,7 @@
 		<span>Welcome back <%= lawyerNow.name %></span>
 	</div>
 	<div id="Profile">
-		<span>Profile</span>
+		<span><a href="/<%= lawyerNow._id %>/pending">Pending Cases</a></span>
 	</div>
 	<div id="New_Case">
 		<span><a href="/<%= lawyerNow._id %>/lawcases">My Cases</a></span>
@@ -405,7 +405,7 @@
 		</rect>
 	</svg>
 	<a href="/<%= lawyerNow._id %>/lawcases"><img id="cases" src="https://i.ibb.co/xmYJgGb/41-UYGBv-Q8-L.png" ></a>
-	<img id="profile" src="https://i.ibb.co/7rTVszy/03-1-Advocate-512.png">
+	<a href="/<%= lawyerNow._id %>/pending"><img id="profile" src="https://i.ibb.co/7rTVszy/03-1-Advocate-512.png"></a>
 	<a href="/<%= lawyerNow._id %>/lawcases"><img id="newcase" src="https://i.ibb.co/T0v0QzN/img-159245.png"></a>
 </div>
 <%- include ("partials/footer") %>

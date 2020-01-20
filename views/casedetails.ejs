@@ -188,7 +188,7 @@
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l5">DATE</label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="casedate"><%= caseNow.createdAt%></label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l6">LAWYER ID</label>
-			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="lawid"></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="lawid"><%= caseNow.lawyer.uid%></label>
 			
 		</div>
 
@@ -206,23 +206,23 @@
 
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l7">FIRST HEARING DATE</label>
-			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="first"></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="first"><%= caseNow.firsthearing%></label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l8">NEXT HEARING DATE</label>
-			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="next"></label>			
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="next"><%= caseNow.nexthearing%></label>			
 		</div>
 
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l9">STATUS</label>
-			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="status"></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="status"><%= caseNow.status%></label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l10">REPORT</label>
-			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="report"></label>			
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="report"><%= caseNow.comment%></label>			
 		</div>
 
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l11">COURT NO</label>
-			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="court"></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="court"><%= caseNow.courtno%></label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l12">JUDGE</label>
-			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="judge"></label>			
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="judge"><%= caseNow.judge%></label>			
 		</div>
 
 

@@ -4,7 +4,7 @@ var caseSchema = new mongoose.Schema({
    name: String,
    type: String,
    description: String,
-   lawyer: String,
+   lawyer: {name : String, uid: String},
    createdAt: { type: Date, default: Date.now },
    author: {
       id: {
@@ -12,7 +12,13 @@ var caseSchema = new mongoose.Schema({
          ref: "Client"
       },
       name: String
-   }
+   },
+   firsthearing : Date,
+   nexthearing : Date,
+   status : String,
+   comment : String,
+   courtno : String,
+   judge : String
 });
 
 module.exports = mongoose.model("Case", caseSchema);

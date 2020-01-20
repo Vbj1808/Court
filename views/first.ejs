@@ -1,243 +1,7 @@
-<html lang="en">
-<head>
-  <title>Court</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style type="text/css">
-    h1{
-      text-align: center;
-      padding-top: 20px;
-      font-family: "Times New Roman";
-      float: center;
-    }
-    .top {
-      background-color: rgba(228,228,228,1);
-      height: 100px;
-      margin-bottom: 10px;
-    }
-    .topi {
-      height: 100px;
-      float: left;
-    }
-    #btmi {
-      height: 100px;
-      float: right;
-    }
-
-    .btn-outline-secondary {
-      margin-left: 20px;
-    }
-    .sr {
-      float: right;
-      margin-right: 20px;
-    }
-    .dropbtn {
-       background-color: #4CAF50;
-       color: white;
-       padding: 16px;
-       font-size: 16px;
-       border: none;
-      }
-
-/* The container <div> - needed to position the dropdown content */
-/* .dropdown {
-  position: relative;
-  float: right;
-}
-
-    .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-} */
-  a {
-    color: black;
-  }
-
- .lbl {
-   float: right;
-   margin-right: 20px;
-   font-family: "Courier New";
-   font-size: 40px;;
- }
-
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-a:link{
-  color: blue;
-}
-
-a:visited{
-  color: grey;
-}
-
-a:hover{
-  color: hotpink;
-
-}
-
-a:active{
-  color: red;
-}
-
-form {
-  width: 100%;
-}
-h2{
-  text-align: center;
-
-}
-.h31{
-  color: #ffffff;
-}
-.p1{
-  color: #000000;
-  font-size: 15px;
-}
-
-.h32{
-  color: #000000;
-}
-
-.p2{
-  font-size: 20px;
-  color: #ff0015;
-}
-
-
-</style>
-
-</head>
-<body>
-<div class="top">
-    <img class="topi" src="https://i.ya-webdesign.com/images/india-transparent-emblem.png">
-    <img id="btmi"src="http://www.vectorsland.com/imgd/l25824-lady-justice-logo-62987.png">
-    <h1>Indian Courts</h1>
-  </div>
-
-  <div class="sec">
-   
-    <button type="button" class="btn btn-outline-secondary"><a href="/">Home</a></button> --> 
-    <% if(!currentUser){%>
-    <span class="dropdown">
-      <button type="button" class="btn btn-outline-secondary sr drpbtn" ><a href="/courtlogin">Court Login</a></button>
-      </span>
-      <%} else {%>
-      <span class="lbl">
-      <label >Welcome <%= currentUser.name%></label>
-      <button  type="button" class="btn btn-outline-secondary"><a href="/logout" >Logout</a></button>
-      </span>
-      <%}%>
-    <hr>
-   
-  </div>
-
-<div class="container">
-  <h2 ><strong>Types of Law</strong></h2>  
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-      <li data-target="#myCarousel" data-slide-to="4"></li>
-      <li data-target="#myCarousel" data-slide-to="5"></li>
-      <li data-target="#myCarousel" data-slide-to="6"></li>
-     
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <a href=""><img src="https://5.imimg.com/data5/DJ/IU/XQ/SELLER-22771868/criminal-law-500x500.jpg" alt="Los Angeles" style="width:100%;"></a>
-        <!-- <div class="carousel-caption">
-          <a href=""><h3><strong>Criminal Law</strong></h3></a>
-         
-         
-          </div> -->
-      </div>
-
-      <div class="item">
-        <a href=""><img src="http://www.advoamira.ae/images/civil-law.jpg" style="width:100%;"></a>
-       <!--  <div class="carousel-caption">
-          <a href=""><h3><strong>Civil Law</strong></h3></a>
-         
-         
-          </div> -->
-      </div>
-   
-      <div class="item">
-        <a href=""><img src=https://www.adventureoutdoors.us/Pictures/Law-Enforcement-Side.jpg alt="New york" style="width:100%;"></a>
-       <!--  <div class="carousel-caption">
-          <a href=""><h3 class="h31"><strong>Enforcement Law</strong></h3></a>
-         
-          </div> -->
-      </div>
-      <div class="item">
-        <a href=""><img src="https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2016/12/28/Photos/Processed/last%20will-kDBI--621x414@LiveMint.jpg" style="width:100%;"></a>
-       <!--  <div class="carousel-caption">
-          <a href=""><h3 class="h32"><strong>Estate Registration Law</strong></h3></a>
-         
-          </div> -->
-      </div>
-      <div class="item">
-        <a href=""><img src="https://lac-group-media.imgix.net/wp-content/uploads/2018/10/1539288765411-Intellectual_property_law.jpg?auto=format%2Ccompress&w=1254&h=836" style="width:100%;"></a>
-       <!--  <div class="carousel-caption">
-          <a href=""><h3 class="h32"><strong>Property Registration Law</strong></h3></a>
-         
-          </div> -->
-      </div>
-      <div class="item">
-        <a href=""><img src="https://lh3.googleusercontent.com/LW-K4zkQaa6rAa2mtb49YIty4eCfuvI5dnr-YgQE895oLCqOSMbdyRuyTm8YshCzkGI7WMIC=w1080-h608-p-no-v0" style="width:100%;"></a>
-       <!--  <div class="carousel-caption">
-          <a href=""><h3><strong>Notary Services Law</strong></h3></a>
-          <p>
-           
-          </p>
-          </div> -->
-      </div>
-    </div>
-
-
-   
-
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-  </div>
+<%- include ("partials/header") %>
 
 <style type="text/css">
+    
   .container1 {
     float: left;
     width : 500px;
@@ -286,48 +50,49 @@ h2{
   }
 </style>
 
-<div class="constainer12">
-<div class="container1">
-  <form action="/login" method="POST">
-    <label class="llb">Client Login</label>
-    <div class="input-group flex-nowrap udiv">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="addon-wrapping">@</span>
-      </div>
-      <input type="text" name="username" class="form-control uid" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-    </div>
-    <div class="input-group flex-nowrap udiv">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="addon-wrapping">#</span>
-      </div>
-      <input type="password" name="password" class="form-control uid" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
-    </div>
-    <button type="submit" class="btn btn-info bbsub">Submit</button>
-    <button class="btn btn-success sbtn"><a href="/register">Click To Signup</a></button>
-  </form>
-  
-</div>
-<span class="container2">
-  <form action="/lawlogin" method="POST">
-    <label class="llb">Lawyer Login</label>
-    <div class="input-group flex-nowrap udiv">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="addon-wrapping">@</span>
-      </div>
-      <input type="text" name="lawusername" class="form-control uid" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-    </div>
-    <div class="input-group flex-nowrap udiv">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="addon-wrapping">#</span>
-      </div>
-      <input type="password" name="lawpassword" class="form-control uid" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
-    </div>
-    <button type="submit" class="btn btn-info bbsub">Submit</button>
-    <button class="btn btn-success sbtn"><a href="/lawregister">Click To Signup</a></button>
-  </form>
-</span>
-</div>
 
+
+<div class="constainer12">
+  <div class="container1">
+    <form action="/login" method="POST">
+      <label class="llb">Client Login</label>
+      <div class="input-group flex-nowrap udiv">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addon-wrapping">@</span>
+        </div>
+        <input type="text" name="username" class="form-control uid" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+      </div>
+      <div class="input-group flex-nowrap udiv">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addon-wrapping">#</span>
+        </div>
+        <input type="password" name="password" class="form-control uid" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
+      </div>
+      <button type="submit" class="btn btn-info bbsub">Submit</button>
+      <button class="btn btn-success sbtn"><a href="/register">Click To Signup</a></button>
+    </form>
+    
+  </div>
+  <span class="container2">
+    <form action="/lawlogin" method="POST">
+      <label class="llb">Lawyer Login</label>
+      <div class="input-group flex-nowrap udiv">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addon-wrapping">@</span>
+        </div>
+        <input type="text" name="lawusername" class="form-control uid" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+      </div>
+      <div class="input-group flex-nowrap udiv">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addon-wrapping">#</span>
+        </div>
+        <input type="password" name="lawpassword" class="form-control uid" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
+      </div>
+      <button type="submit" class="btn btn-info bbsub">Submit</button>
+      <button class="btn btn-success sbtn"><a href="/lawregister">Click To Signup</a></button>
+    </form>
+  </span>
+  </div>
 
 
 <%- include ("partials/footer") %>

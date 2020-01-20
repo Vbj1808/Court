@@ -171,7 +171,7 @@
 </style>
 	<div class="container">		
 	<h5 class="h5">CASE DETAILS</h5>	
-	<form>
+	<form action="/<%= caseNow._id %>/modifycase" method="POST">
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l1">CASE</label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="casename"><%= caseNow.name%></label>
@@ -183,14 +183,14 @@
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l3">CLIENT NAME</label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="cliname"><%= caseNow.author.name%></label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l4">LAWYER NAME</label>
-			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="lawname"><%= caseNow.lawyer%></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="lawname"><%= caseNow.lawyer.name%></label>
 		</div>
 
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l5">DATE</label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="casedate"><%= caseNow.createdAt%></label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l6">LAWYER ID</label>
-			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="lawid"></label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="lawid"><%= caseNow.lawyer.uid%></label>
 			
 		</div>
 
@@ -208,33 +208,33 @@
 
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l7">FIRST HEARING DATE</label>
-			<input type="date" id="first">
+			<input name="firsthearing" type="date" id="first" value="<%= caseNow.firsthearing%>">
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l8">NEXT HEARING DATE</label>
-			<input type="date" id="next">
+			<input name="nexthearing" type="date" id="next" value="<%= caseNow.nexthearing%>">
 					
 		</div>
 
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l9">STATUS</label>
-			<select id="status" >
+			<select name="status" id="status" >
 				<option selected>CHOOSE</option>
 				<option>PENDING</option>
 				<option>CLOSED</option>
 			</select>			
-			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l10">REPORT</label>
+			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l10">COMMENT</label>
 					
 		</div>
 
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l11">COURT NO</label>
-			<input type="text" id="court">
+			<input name="courtno" type="text" id="court">
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l12">JUDGE</label>
-			<input type="text" id="judge">
+			<input name="judge" type="text" id="judge">
 				
 		</div>
 
 		<div>
-			<button type="button" class="btn btn-primary" style="margin: auto; display: block; margin-bottom: 30px; margin-top: 30px;">MODIFY</button>
+			<button type="submit" class="btn btn-primary" style="margin: auto; display: block; margin-bottom: 30px; margin-top: 30px;">MODIFY</button>
 		</div>
 	</form>	
 	

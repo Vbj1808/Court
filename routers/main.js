@@ -78,24 +78,64 @@ app.get("/logout",(req, res) =>{
 })
 
 app.post("/:id/newcase",(req,res) => {
-    var author = {
-        id: req.user._id,
-        name: req.user.name
-    }
-    var newCase = new Case({name: req.body.casename, 
-                            type: req.body.type,
-                            description: req.body.desc,
-                            lawyer : req.body.lawyer,
-                            author : author
-                        });
-    Case.create(newCase, (err, newcase) => {
+    
+    Lawyer.find({name : req.body.lawyer},(err,found)=>{
+        console.log(found);
         if(err){
-            console.log(err)
+            console.log(err);
         }else{
-            res.redirect('/' + req.user._id + "/dashboard");
+        var author = {
+            id: req.user._id,
+            name: req.user.name
         }
-    })
+        var lawyerr = {
+            name : found[0].name,
+            uid : found[0].uid
+        }
+        var newCase = new Case({name: req.body.casename, 
+            type: req.body.type,
+            description: req.body.desc,
+            lawyer : lawyerr,
+            author : author,
+            firsthearing : null,
+            nexthearing : null,
+            status : "Not Updated",
+            comment : "Not Updated",
+            courtno : "Not Updated",
+            judge : "Not Updated"
+
+        });
+            Case.create(newCase, (err, newcase) => {
+            if(err){
+            console.log(err)
+            }else{
+                res.redirect('/' + req.user._id + "/dashboard");
+                }
+         });
+        }
+        });
+    
+    
 });
+
+
+app.post("/:id/modifycase",(req,res)=>{
+    Case.findByIdAndUpdate(req.params.id,{$set:{firsthearing : req.body.firsthearing, 
+        nexthearing: req.body.nexthearing , 
+        status: req.body.status, 
+        comment : req.body.comment , 
+        courtno: req.body.courtno, 
+        judge: req.body.judge}},{new:true},(err,updated) =>{
+            if(err){
+                console.log(err)
+            }else{
+                console.log(updated);
+                res.redirect("/" + req.params.id + "/modifycase");
+            }
+            
+        });
+});
+
 
 app.get("/:id/cases",(req, res) => {
     var newcase ;

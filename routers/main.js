@@ -18,8 +18,10 @@ const ejs = require("ejs");
 const pdf = require("html-pdf");
 var multer  = require('multer');
 var server = require('http').Server(app);
-var io = require('socket.io')(3880);
-// server.listen(80);
+
+const PORT = process.env.PORT || 3000
+server.listen(PORT);
+var io = require('socket.io')(server);
 const multerConf = {
     // storage : multer.diskStorage({
     //     destination : function(req,file,next){

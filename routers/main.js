@@ -18,7 +18,7 @@ const ejs = require("ejs");
 const pdf = require("html-pdf");
 var multer  = require('multer');
 var server = require('http').Server(app);
-var io = require('socket.io')(80);
+var io = require('socket.io')(3880);
 // server.listen(80);
 const multerConf = {
     // storage : multer.diskStorage({

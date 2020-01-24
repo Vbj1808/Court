@@ -19,7 +19,8 @@
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "passport-local-mongoose": "^6.0.1",
-    "session": "^0.1.0"
+    "session": "^0.1.0",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {},
   "scripts": {

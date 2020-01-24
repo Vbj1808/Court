@@ -17,6 +17,9 @@ app.use(upload());
 const ejs = require("ejs");
 const pdf = require("html-pdf");
 var multer  = require('multer');
+var server = require('http').Server(app);
+var io = require('socket.io')(80);
+// server.listen(80);
 const multerConf = {
     // storage : multer.diskStorage({
     //     destination : function(req,file,next){
@@ -51,7 +54,7 @@ app.get("/",(req,res) => {
         if(err){
             console.log(err);
         }else{
-            console.log(foundcase);
+            // console.log(foundcase);
         }
         
     });
@@ -59,10 +62,27 @@ app.get("/",(req,res) => {
 
 app.get("/:id/casedetails",(req,res)=>{
     Case.findById(req.params.id,(err,found)=>{
-        res.render("casedetails",{currentUser: null , caseNow: found});
+        res.render("casedetails",{currentUser: null , caseNow: found, lawyers: JSON.stringify(found.lawyer)});
         
     });
     
+});
+
+io.on('connection',(socket)=>{
+    console.log("Client Connected");
+    // socket.emit('Boom',{name : "Clement SMith is my Name"});
+
+    socket.on('SendMsg', function (data) {
+        console.log("To " + data.to + " : " + data.message);
+        io.sockets.emit("Boom",data);
+      });
+      socket.on('Boom', function (data) {
+        console.log("To " + data.to + " : " + data.message);
+      });
+
+      socket.on("LawyerBoom",function(data){
+            io.sockets.emit("UserBoom",data);
+      });
 });
 
 app.get("/:id/pending",(req,res)=>{
@@ -175,7 +195,7 @@ app.get("/:id/cases",(req, res) => {
         if(err){
             console.log(err);
         }else{
-            console.log(found);
+            // console.log(found);
            res.render("cases",{caseNow : found,currentUser: req.user});
         }
     });
@@ -206,11 +226,21 @@ app.post("/courtlogin",(req,res) => {
 app.get("/:id/lawcases",(req, res) => {
     
     Lawyer.findById(req.params.id,(err,found)=>{
-        Case.find({lawyer: found.name},(err,foundCase)=>{
-            res.render("cases",{caseNow: foundCase, currentUser: found.name});
+        Case.find({"lawyer.name" : found.name},(err,foundCase)=>{
+            console.log(foundCase);
+            res.render("seecases",{caseNow: foundCase, currentUser: found.name});
         });
     });
 });
+
+app.get("/:id/lawcasedetails",(req,res)=>{
+    Case.findById(req.params.id,(err,found)=>{
+        res.render("lawyercasedisplay",{currentUser: null , caseNow: found, users: JSON.stringify(found.author),lawyers: JSON.stringify(found.lawyer)});
+        
+    });
+});
+
+
 app.get("/login", (req,res) => res.render("clilogin"));
 
 app.get("/register", (req,res) => {

@@ -36,4 +36,4 @@ passport.deserializeUser(Client.deserializeUser());
 // passport.serializeUser(Lawyer.serializeUser());
 // passport.deserializeUser(Lawyer.deserializeUser());
 
-app.listen(process.env.PORT || 3500, process.env.IP, () => console.log('Example app listening on port ' + process.env.PORT ));
+app.listen(process.env.PORT || 3500, process.env.IP, () => console.log('Example app listening on port ' + process.env.IP ));

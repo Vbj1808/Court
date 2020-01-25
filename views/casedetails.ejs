@@ -346,7 +346,7 @@
 		<h1>Chat</h1>
 	
 		<label  for="msg" style="height: 200px;">Messages<ul id="rec"></ul></label><br>
-		<input type="text" placeholder="Type message.." name="msg" id="textar" required>
+		<input type="text" placeholder="Type message.." name="msg" id="textar" >
 	
 		<button id="sendmsg" type="submit" value="Send!" class="btn">Send</button>
 		<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
@@ -368,6 +368,7 @@
 			socket.emit('SendMsg', { message : msg , to :layers.uid});
 			var already = document.getElementById("rec").innerHTML ;
 				document.getElementById("rec").innerHTML = already + "<br>Me : " +msg ;
+				document.getElementById('textar').value = "";
 			
 		});
 

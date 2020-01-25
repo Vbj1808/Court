@@ -17,11 +17,10 @@ app.use(upload());
 const ejs = require("ejs");
 const pdf = require("html-pdf");
 var multer  = require('multer');
-var server = require('http').Server(app);
+
 
 const PORT = process.env.PORT || 3800
-server.listen(PORT);
-var io = require('socket.io')(server);
+
 const multerConf = {
     // storage : multer.diskStorage({
     //     destination : function(req,file,next){
@@ -70,22 +69,22 @@ app.get("/:id/casedetails",(req,res)=>{
     
 });
 
-io.on('connection',(socket)=>{
-    console.log("Client Connected");
-    // socket.emit('Boom',{name : "Clement SMith is my Name"});
+// io.on('connection',(socket)=>{
+//     console.log("Client Connected");
+//     // socket.emit('Boom',{name : "Clement SMith is my Name"});
 
-    socket.on('SendMsg', function (data) {
-        console.log("To " + data.to + " : " + data.message);
-        io.sockets.emit("Boom",data);
-      });
-      socket.on('Boom', function (data) {
-        console.log("To " + data.to + " : " + data.message);
-      });
+//     socket.on('SendMsg', function (data) {
+//         console.log("To " + data.to + " : " + data.message);
+//         io.sockets.emit("Boom",data);
+//       });
+//       socket.on('Boom', function (data) {
+//         console.log("To " + data.to + " : " + data.message);
+//       });
 
-      socket.on("LawyerBoom",function(data){
-            io.sockets.emit("UserBoom",data);
-      });
-});
+//       socket.on("LawyerBoom",function(data){
+//             io.sockets.emit("UserBoom",data);
+//       });
+// });
 
 app.get("/:id/pending",(req,res)=>{
     PendingCase.find({"lawyer.id" : req.params.id},(err,found)=>{

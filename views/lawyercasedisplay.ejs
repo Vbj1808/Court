@@ -342,11 +342,11 @@
 	<button class="open-button" onclick="openForm()">Chat</button>
 	
 	<div class="chat-popup" id="myForm">
-	  <form class="form-container">
+	  <form id="chatform" class="form-container">
 		<h1>Chat</h1>
 	
-		<label id="rec" for="msg" style="height: 200px;">Message</label>
-		<input type="text" placeholder="Type message.." name="msg" id="textar" required>
+		<label id="rec" for="msg" style="height: 200px;">Message</label><br>
+		<input type="text" placeholder="Type message.." name="msg" id="textar" >
 	
 		<button id="sendmsg" type="submit" class="btn">Send</button>
 		<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
@@ -356,21 +356,28 @@
 	<script>
 
 
-		var socket = io();
+		var socket = io.connect();
 		var userss = JSON.parse('<%-users %>');
 		var law = JSON.parse('<%- lawyers%>');
+		$("#chatform").submit(function(e){
+			e.preventDefault();
+		});
 
 		document.getElementById('sendmsg').addEventListener("click",function(){
 			
-			  
-			socket.emit('LawyerBoom', { message : document.getElementById("textar").value , to :userss.id});
-		
+			msg = document.getElementById("textar").value;
+			socket.emit('LawyerBoom', { message : msg , to :userss.id});
+			var already = document.getElementById("rec").innerHTML ;
+				document.getElementById("rec").innerHTML = already + "<br>Me : " +msg ;
+				document.getElementById('textar').value = "";
 		});
           
         socket.on('Boom',function(data){
 			if(data.to == law.uid){
 				console.log("From JavaScript : " + data.message);
-				document.getElementById("rec").innerHTML = data.message ;
+				var already = document.getElementById("rec").innerHTML ;
+				document.getElementById("rec").innerHTML = already + "<br>" +userss.name + " :" + data.message  ;
+				// document.getElementById("rec").innerHTML = data.message ;
 		}
 			});
 	function openForm() {

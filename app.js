@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3400 ;
+const port = process.env.PORT || 3500 ;
 const main = require("./routers/main");
 const mongoose = require("mongoose");
 const Client = require("./models/client");
@@ -35,5 +35,30 @@ passport.serializeUser(Client.serializeUser());
 passport.deserializeUser(Client.deserializeUser());
 // passport.serializeUser(Lawyer.serializeUser());
 // passport.deserializeUser(Lawyer.deserializeUser());
+// var server = require('http').Server(app);
+// server.listen(3600);
+var socket = require("socket.io");
 
-app.listen(process.env.PORT || 3500, process.env.IP, () => console.log('Example app listening on port ' + process.env.IP ));
+
+
+
+var server = app.listen(port, process.env.IP, () => console.log('Example app listening on port ' + process.env.IP ));
+
+var io = socket(server);
+
+io.on('connection',(socket)=>{
+  console.log("Client Connected");
+  // socket.emit('Boom',{name : "Clement SMith is my Name"});
+
+  socket.on('SendMsg', function (data) {
+      console.log("To " + data.to + " : " + data.message);
+      io.sockets.emit("Boom",data);
+    });
+    socket.on('Boom', function (data) {
+      console.log("To " + data.to + " : " + data.message);
+    });
+
+    socket.on("LawyerBoom",function(data){
+          io.sockets.emit("UserBoom",data);
+    });
+});

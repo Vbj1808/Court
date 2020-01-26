@@ -110,13 +110,14 @@ app.post("/mobilestatus",(req,res)=>{
 //         }
 //     }
 // });
-client.messages
-  .create({
-     body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-     from: '+917550145401',
-     to: '+919003286330'
-   })
-  .then(message => {console.log(message.sid);res.render("otpstatus",{currentUser: null});});
+// client.messages
+//   .create({
+//      body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
+//      from: '+917550145401',
+//      to: '+919003286330'
+//    })
+//   .then(message => {console.log(message.sid);res.render("otpstatus",{currentUser: null});});
+  res.render("otpstatus",{currentUser: null});
 
     
 });

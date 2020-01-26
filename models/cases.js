@@ -13,6 +13,7 @@ var caseSchema = new mongoose.Schema({
       },
       name: String
    },
+   mobile: String,
    firsthearing : Date,
    nexthearing : Date,
    status : String,

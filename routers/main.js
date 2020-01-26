@@ -17,7 +17,25 @@ app.use(upload());
 const ejs = require("ejs");
 const pdf = require("html-pdf");
 var multer  = require('multer');
+const SendOtp = require('sendotp');
+const sendOtp = new SendOtp('AuthKey');
+const SMS = require('node-sms-send')
+ 
+const sms = new SMS('username', 'password')
+const otpGen  = require("otp-generator");
+const otpTool = require("otp-without-db"); 
+const key     = "secretKey";
 
+const Nexmo = require('nexmo');
+
+const nexmo = new Nexmo({
+  apiKey: '8759d329',
+  apiSecret: '10aHwdAXCKUsARcW',
+});
+
+const accountSid = 'ACe77a97bc8c0b00f967a994e68b0ba889';
+const authToken = 'd4b8444e6bdc35d911fbf09a8344c57e';
+const client = require('twilio')(accountSid, authToken);
 
 const PORT = process.env.PORT || 3800
 
@@ -61,9 +79,51 @@ app.get("/",(req,res) => {
     });
 });
 
+app.get("/mobilestatus",(req,res)=>{
+    res.render("mobileform",{currentUser: null});
+});
+
+app.post("/mobilestatus",(req,res)=>{
+    // sendOtp.send(Number(req.body.mobileno),"PRIIND",(err,data)=>{
+    //     console.log(data);
+    //     res.render("otpstatus",{currentUser: null});
+    // });
+    var number = "+91" + req.body.mobileno ;
+//     sms.send(number, 'Hello!')
+//   .then(body => console.log(body)) // returns { message_id: 'string' }
+//   .catch(err => console.log(err.message))
+
+// let otp   = otpGen.generate(6, { upperCase: false, specialChars: false, alphabets: false });  
+
+// let hash = otpTool.createNewOTP(number,otp,key);
+// const from = 'Nexmo';
+// const to = '919003286330';
+// const text = 'Hello from Nexmo';
+// nexmo.message.sendSms(from, to, text,(err, responseData) => {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         if(responseData.messages[0]['status'] === "0") {
+//             console.log("Message sent successfully.");
+//         } else {
+//             console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+//         }
+//     }
+// });
+client.messages
+  .create({
+     body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
+     from: '+917550145401',
+     to: '+919003286330'
+   })
+  .then(message => {console.log(message.sid);res.render("otpstatus",{currentUser: null});});
+
+    
+});
+
 app.get("/:id/casedetails",(req,res)=>{
     Case.findById(req.params.id,(err,found)=>{
-        res.render("casedetails",{currentUser: null , caseNow: found, lawyers: JSON.stringify(found.lawyer)});
+        res.render("casedetails1",{currentUser: null , caseNow: found, lawyers: JSON.stringify(found.lawyer)});
         
     });
     

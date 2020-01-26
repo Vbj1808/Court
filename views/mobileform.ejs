@@ -1,0 +1,70 @@
+<%- include ("partials/header") %>
+<style type="text/css">
+    .container1 {
+      float: left;
+      width : 600px;
+      height: 350px;
+      margin-left: 550px;
+      margin-top: 120px;
+      border: 5px rgba(228,228,228,1) solid;
+      border-radius: 30px;
+    }
+    .uid {
+      width: 60px;
+      height: 65px;;
+    }
+    .udiv {
+      width: 75%;
+      margin-left: 50px;
+      margin-top: 30px;
+    }
+    .llb {
+      margin-left: 145px;
+      margin-top: 35px;
+      font-size: 35px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .bbsub {
+      margin-left: 205px;
+      margin-top: 35px;
+      width: 100px;
+    }
+
+
+  
+    .sbtn {
+      margin-left: 90px;
+      margin-top: 25px;
+      width: 300px;
+      color: firebrick;
+    }
+  
+    .container2 {
+      float: left;
+      width : 500px;
+      height: 450px;
+      margin-left: 200px;
+      margin-top: 120px;
+      border: 5px rgba(228,228,228,1) solid;
+      border-radius: 30px;
+    }
+  </style>
+  
+  <div class="constainer12">
+  <div class="container1">
+    <form action="/mobilestatus" method="POST">
+      <label class="llb">Mobile Login</label>
+      <div class="input-group flex-nowrap udiv">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="addon-wrapping">@</span>
+        </div>
+        <input type="text" name="mobileno" class="form-control uid" placeholder="Mobile Number" aria-label="Username" aria-describedby="addon-wrapping">
+        
+      </div>
+      <button type="submit" class="btn btn-info bbsub">Submit</button><br>
+    </form>
+    
+  </div>
+
+
+<%- include ("partials/footer") %>

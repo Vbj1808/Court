@@ -150,9 +150,19 @@ app.get("/:id/casedetails",(req,res)=>{
 app.get("/:id/pending",(req,res)=>{
     PendingCase.find({"lawyer.id" : req.params.id},(err,found)=>{
         console.log(found);
-        res.render("accept",{currentUser: found[0] , currentCase: found});
+        res.render("pending",{currentUser: found[0] , currentCase: found});
     });
     
+});
+
+app.get("/:id/negotiate",(req,res)=>{
+    PendingCase.findById(req.params.id,(err,found)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.render("negotiate",{caseNow : found, currentUser: null ,users: JSON.stringify(found.author),lawyers: JSON.stringify(found.lawyer)});
+        }
+    });
 });
 
 app.get("/:id/modifycase",(req,res)=>{
@@ -225,6 +235,27 @@ app.get('/casetypes',(req,res)=>{
     res.render("typeofcase",{currentUser: null});
 });
 
+app.get("/:id/clientpending",(req,res)=>{
+    PendingCase.find({"author.id" : req.params.id},(err,found)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(found);
+            res.render("pendingclient",{caseNow : found,currentUser: req.user})
+        }
+    });
+});
+
+
+app.get("/:id/viewpendingcase",(req,res)=>{
+    PendingCase.findById(req.params.id,(err,found)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.render("pendingcasedetails",{caseNow : found,currentUser: req.user ,users: JSON.stringify(found.author),lawyers: JSON.stringify(found.lawyer)})
+        }
+    });
+});
 app.post("/:id/modifycase",(req,res,)=>{
     // if(req.files){
     //     console.log(req.files.docs);

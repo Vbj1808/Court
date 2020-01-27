@@ -1,0 +1,38 @@
+<%- include ("partials/header") %>
+	<style type="text/css">
+		.card {
+			border : 4px rgba(228,228,228,1) solid;
+      border-radius : 10px;
+      margin-top: 40px;
+		}
+		span {
+        float: left;
+        margin-left: 50px;
+    }
+    /* img {
+      width : 100px;
+      height : 100px;
+    } */
+    
+	</style>
+  <div class = "constainer">
+  <% caseNow.forEach(function(casenow){%>
+	<span class="card" style="width: 300px;">
+  <img src="https://d22sy6g45ur8ee.cloudfront.net/assets/images/articles/icons/orange/article-criminal-defense.svg.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><%= casenow.name %></h5>
+    <p class="card-text"><%= casenow.description %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Type          : <%= casenow.type %></li>
+    <li class="list-group-item">Lawyer        : <%= casenow.lawyer.name %></li>
+    <li class="list-group-item">Client Name   : <%= casenow.author.name %></li>
+    <li class="list-group-item">Date Of Issue : <%= casenow.createdAt %></li>
+  </ul>
+  <div class="card-body">
+    <a href="/<%= casenow._id%>/viewpendingcase" class="card-link">View Case</a>
+  </div>
+</span>
+<%});%>
+</div>
+<%- include ("partials/footer") %>

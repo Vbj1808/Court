@@ -176,7 +176,7 @@ input:focus {
 </style>
 <% currentCase.forEach(function(casenow){%>
 	<div class="container">	
-<form method="/<%= casenow._id%>/accept" method="POST">
+<form method="/<%= casenow._id%>/negotiate" method="POST">
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l1">CaseName</label>
 			<label name="name" style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="casename"><input style="background-color: rgba(228,228,228,1); border: rgba(228,228,228,1);" value="<%= casenow.name%>"></label>
@@ -197,8 +197,8 @@ input:focus {
 		</div>	
 
 		<div>
-			<a href="/<%= casenow._id%>/accept"><button type="button" class="btn btn-primary" style="margin-bottom: 30px; margin-top: 30px; margin-left: 70px;">ACCEPT</button></a>
-			<button type="button" class="btn btn-primary" style="margin-bottom: 30px; margin-top: 30px; margin-left: 435px">REJECT</button>
+			<a href="/<%= casenow._id%>/negotiate"><button type="button" class="btn btn-primary" style="margin-bottom: 30px; margin-top: 30px; margin-left: 70px;">Negotiate</button></a>
+			<button type="button" class="btn btn-primary" style="margin-bottom: 30px; margin-top: 30px; margin-left: 435px">Reject</button>
 		</div>	
 	</form>	
 
@@ -234,4 +234,4 @@ input:focus {
    </div>
 </form> -->
 <%});%>
-<%- include ("partials/footer") %>5e23030482b118130363d14f/cases
+<%- include ("partials/footer") %>

@@ -150,7 +150,7 @@ app.get("/:id/casedetails",(req,res)=>{
 app.get("/:id/pending",(req,res)=>{
     PendingCase.find({"lawyer.id" : req.params.id},(err,found)=>{
         console.log(found);
-        res.render("pending",{currentUser: found[0] , currentCase: found});
+        res.render("pending",{currentUser: found[0].lawyer.name , currentCase: found});
     });
     
 });

@@ -249,7 +249,7 @@
 <div class="container">	
 <div id="content">	
 	<h5 class="h5">CASE DETAILS</h5>	
-	<form>
+	<form action="/<%= caseNow._id %>/accept" method="POST">
 		<div>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l1">CASE</label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="casename"><%= caseNow.name%></label>
@@ -304,7 +304,7 @@
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" class="l12">JUDGE</label>
 			<label style="font-family: 'Crimson Text', serif; font-size: 16px;word-wrap: break-word; text-align: justify;" id="judge"><%= caseNow.judge%></label>			
         </div>
-        <button class="btn btn-primary" style="margin-left: 400px;">Accept</button>
+        <button type="submit" class="btn btn-primary" style="margin-left: 400px;">Accept</button>
         <!-- <button id="invoice" class="btn btn-secondary">Download Invoice</button> -->
 
 

@@ -333,6 +333,50 @@ app.get("/:id/lawcasedetails",(req,res)=>{
     });
 });
 
+app.post("/:id/accept",(req,res)=>{
+    PendingCase.findById(req.params.id,(err,found)=>{
+        if(err){
+            console.log(err);
+        }else{
+            Lawyer.findById(found.lawyer.id,(err,foundLawyer)=>{
+                var lw = {
+                    name : foundLawyer.name ,
+                    uid : foundLawyer.uid
+                };
+                var casenew = new Case({
+                    name : found.name,
+                    type : found.type ,
+                    description : found.description ,
+                    createdAt : found.createdAt ,
+                    author : found.author,
+                    lawyer : lw ,
+                    mobile: "7550145401",
+                    firsthearing : null,
+                    nexthearing : null,
+                    status : null,
+                    comment : null,
+                    courtno : null,
+                    judge : null
+                });
+                Case.create(casenew,(err,insertedCase)=>{
+                    if(err){
+                        console.log(err)
+                    }else{
+                        PendingCase.findByIdAndDelete(req.params.id,(err,deleted)=>{
+                            if(err){
+                                console.log(err);
+                            }else{
+                                res.redirect("/" + foundLawyer._id + "/lawdashboard");
+                            }
+                        });
+                        
+                    }
+                });
+            });
+        }
+    });
+});
+
 
 app.get("/login", (req,res) => res.render("clilogin"));
 

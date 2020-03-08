@@ -19,7 +19,7 @@ const pdf = require("html-pdf");
 var multer  = require('multer');
 const SendOtp = require('sendotp');
 const sendOtp = new SendOtp('AuthKey');
-const SMS = require('node-sms-send')
+const SMS = require('node-sms-send');
  
 const sms = new SMS('username', 'password')
 const otpGen  = require("otp-generator");
@@ -510,5 +510,36 @@ app.post("/login", passport.authenticate("local",
 app.get("/:id/dashboard",(req,res) => {
     res.render("dashboard",{clientNow : req.user,currentUser: req.user});
 });
+
+
+//Mobile App Routes
+
+
+app.get("/mobile",(req,res)=>{
+    res.send("Hi");
+});
+
+
+app.post("/mobile/login", (req,res,next)=>{
+    passport.authenticate("local", function(err,user,info){
+
+        if(err){
+            console.log("Inside Mobile Post Error : " + err);
+        }else {
+            console.log("Inside Mobile Post : " + user);
+            res.status(200).send({ user1: user });
+
+            // req.logIn(user, function(err) {
+            //     if (err) { console.log("Inside Mobile Post Error1 : " + err);
+            //     }else{
+            //         console.log("Logged In Sucessfully : ");
+            //     }
+                
+            //   });
+        }
+})(req, res, next);
+    // res.send("OKKK");
+}
+);
 
 module.exports = app;

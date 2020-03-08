@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3500 ;
 const main = require("./routers/main");
+const mobile = require("./routers/mobile");
 const mongoose = require("mongoose");
 const Client = require("./models/client");
 const Lawyer = require("./models/lawyer");
@@ -23,6 +24,7 @@ db.once('open', function() {
 
 app.set('view engine', 'ejs');
 app.use("/",main);
+// app.use("/mobile",mobile);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));

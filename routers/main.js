@@ -511,10 +511,7 @@ app.get("/:id/dashboard",(req,res) => {
     res.render("dashboard",{clientNow : req.user,currentUser: req.user});
 });
 
-<<<<<<< HEAD
-=======
 
->>>>>>> f30d3ec7303167830880f2b9851dcfa0b7a39630
 //Mobile App Routes
 
 

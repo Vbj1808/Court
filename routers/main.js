@@ -19,7 +19,7 @@ const pdf = require("html-pdf");
 var multer  = require('multer');
 const SendOtp = require('sendotp');
 const sendOtp = new SendOtp('AuthKey');
-const SMS = require('node-sms-send')
+const SMS = require('node-sms-send');
  
 const sms = new SMS('username', 'password')
 const otpGen  = require("otp-generator");
@@ -511,6 +511,10 @@ app.get("/:id/dashboard",(req,res) => {
     res.render("dashboard",{clientNow : req.user,currentUser: req.user});
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f30d3ec7303167830880f2b9851dcfa0b7a39630
 //Mobile App Routes
 
 

@@ -511,4 +511,47 @@ app.get("/:id/dashboard",(req,res) => {
     res.render("dashboard",{clientNow : req.user,currentUser: req.user});
 });
 
+//Mobile App Routes
+
+
+app.get("/mobile",(req,res)=>{
+    res.send("Hi");
+});
+
+
+app.post("/mobile/login", (req,res,next)=>{
+    passport.authenticate("local", function(err,user,info){
+
+        if(err){
+            console.log("Inside Mobile Post Error : " + err);
+        }else {
+            console.log("Inside Mobile Post : " + user);
+            res.status(200).send({ user1: user });
+
+            // req.logIn(user, function(err) {
+            //     if (err) { console.log("Inside Mobile Post Error1 : " + err);
+            //     }else{
+            //         console.log("Logged In Sucessfully : ");
+            //     }
+                
+            //   });
+        }
+})(req, res, next);
+    // res.send("OKKK");
+}
+);
+
+app.get("/mobile/:id/cases",(req, res) => {
+    var newcase ;
+    Case.find({"author.id" : req.params.id},(err, found) =>{
+        if(err){
+            console.log(err);
+        }else{
+            // console.log(found);
+        //    res.render("cases",{caseNow : found,currentUser: req.user});
+        res.status(200).send({ casesNow : found});
+        }
+    });
+});
+
 module.exports = app;

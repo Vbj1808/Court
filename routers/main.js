@@ -61,6 +61,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 // app.set('views', __dirname + '/views');
 app.get("/",(req,res) => {
     if(req.isAuthenticated()){
@@ -555,4 +561,16 @@ app.get("/mobile/:id/cases",(req, res) => {
     });
 });
 
+app.get("/mobile/:id/clientpending",(req,res)=>{
+    
+
+    PendingCase.find({"author.id" : req.params.id},(err,found)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(found);
+            res.status(200).send({pendingCases : found});
+        }
+    });
+})  
 module.exports = app;

@@ -572,5 +572,15 @@ app.get("/mobile/:id/clientpending",(req,res)=>{
             res.status(200).send({pendingCases : found});
         }
     });
-})  
+})  ;
+
+app.get("/mobile/retrivelawyers/:casetype",(req,res)=>{
+    Lawyer.find({"qualification" : req.params.casetype},(err,found)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.status(200).send({foundLawyers : found});
+        }
+    })
+});
 module.exports = app;
